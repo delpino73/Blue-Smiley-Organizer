@@ -1,0 +1,17 @@
+IndexIgnore *
+
+AddType application/x-gtar gz
+
+# Options +FollowSymLinks
+
+DirectoryIndex ./index.php
+ErrorDocument 404 /organizer/page-not-found.php
+
+RewriteEngine on
+RewriteRule ^login-(.*)$ autologin.php?code=$1 [NC]
+RewriteRule ^user-(.*)$ show-about-me.php?username=$1 [NC]
+RewriteRule ^file-(.*)$ show-file-public.php?token=$1 [NC]
+RewriteRule ^permalink-(.*)$ show-blog-public-permalink.php?blog_id=$1 [NC]
+RewriteRule ^blog-(.*)-(.*)-(.*).html$ show-blog-public.php?username=$1&cat=$2&page=$3 [NC]
+RewriteRule ^blog-(.*)-(.*).html$ show-blog-public.php?username=$1&page=$2 [NC]
+RewriteRule ^blog-(.*)$ show-blog-public.php?username=$1&page=1 [NC]

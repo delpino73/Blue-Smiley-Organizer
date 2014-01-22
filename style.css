@@ -1,0 +1,61 @@
+body {
+margin-left:2%;
+margin-right:2%;
+margin-top:2%;
+font-size:13px;
+font-family:Verdana, Arial, Sans-serif
+}
+
+td {
+font-family:Arial;
+font-size:14px
+}
+
+a:hover {
+color:#999;
+font-size:13px;
+font-weight:700;
+text-decoration:none
+}
+
+input,select,textarea {
+font-family:Verdana, Arial, Helvetica, Sans-serif;
+font-size:12px;
+border-color:#cfcdcb;
+border-width:1px;
+background:#fcfcfc
+}
+
+h1 {
+font-family:Verdana;
+font-size:15px;
+color:#333
+}
+
+h2 {
+font-family:Verdana;
+font-size:13px;
+color:#333
+}
+
+input.big {
+font-family:Batang;
+font-weight:700;
+font-size:40pt
+}
+
+table.pastel,table td.pastel,table.pastel td {
+border:1px solid #c5c5c5; border-collapse:collapse
+}
+
+a:link,a:visited,a:active {
+color:#369;
+font-size:13px;
+font-weight:700;
+text-decoration:none
+}
+
+input.small,select {
+font-family:Verdana, Arial, Helvetica, Sans-serif;
+font-size:10px
+}

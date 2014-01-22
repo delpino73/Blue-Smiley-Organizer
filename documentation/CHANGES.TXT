@@ -1,0 +1,294 @@
+============================================
+=     Blue Smiley Organizer - Change Log   =
+=      http://www.bookmark-manager.com     =
+============================================
+
+------ v 5.53 --- 7. January 2014 ------
+-minor fix (removed deprecated split function)
+
+------ v 5.52 --- 18. June 2013 ------
+-mysql 5.5 upgrade fix
+
+------ v 5.51 --- 26. May 2013 ------
+-timezone fix
+
+------ v 5.50 --- 10. October 2012 ------
+-minor fixes and improvements
+
+------ v 5.49 --- 20. July 2011 ------
+-updated to work with newest PHP version (ereg -> preg_match)
+
+------ v 5.48 --- 7. December 2010 ------
+-minor fixes and improvements
+
+------ v 5.47 --- 25. May 2008 ------
+-Search Bar has now 10 slots more
+
+------ v 5.46 --- 21. April 2008 ------
+-To-Do's have a new status field (percentage done)
+
+------ v 5.45 --- 06. March 2008 ------
+-added a Captcha function to the signup page
+
+------ v 5.44 --- 01. March 2008 ------
+-bug fixed in live chat module, which caused problems in FF
+
+------ v 5.43 --- 26. February 2008 ------
+-new flashcard system for knowledge
+
+------ v 5.42 --- 23. February 2008 ------
+-"create link" feature for blog
+
+------ v 5.41 --- 14. February 2008 ------
+-list view for notes, knowledge, blog, diary
+
+------ v 5.40 --- 13. February 2008 ------
+-text area of notes, knowledge, blog, diary can be increased / decreased
+
+------ v 5.39 --- 11. February 2008 ------
+-RSS feeds items can be limited
+
+------ v 5.38 --- 2. January 2008 ------
+-Technorati and Icerocket pings now possible for blog posts
+
+------ v 5.37 --- 30. December 2007 ------
+-to-do, notes, contacts, files, knowledge can be made public
+
+------ v 5.35 --- 25. December 2007 ------
+-encrypted RSS Feed for To-Do List (for mobile devices)
+
+------ v 5.32 --- 10. December 2007 ------
+-minor change in normal calendar view
+-other minor changes
+
+------ v 5.31 --- 29. October 2007 ------
+-minor changes and fixes
+
+------ v 5.30 --- 6. October 2007 ------
+-category overview of notes, to-do, links, etc can be shown on homepages
+
+------ v 5.28 --- 29. September 2007 ------
+-more options for banner ad settings (see config.sample)
+-other bugfixes
+
+------ v 5.27 --- 15. September 2007 ------
+-default reminder overview changed
+
+------ v 5.26 --- 1. September 2007 ------
+-list view for contacts
+-fix in search organizer
+
+------ v 5.25 --- 27. August 2007 ------
+-autofocus on first field in input forms
+-fixes when downloading files
+
+------ v 5.23 --- 07. August 2007 ------
+-blog show only title function
+-other bugfixes
+
+------ v 5.22 --- 28. July 2007 ------
+-quick reminder delete
+
+------ v 5.21 --- 27. July 2007 ------
+-bookmark import improved and other minor changes
+
+------ v 5.20 --- 16. July 2007 ------
+-database search now also in global search
+-more than 3 homepage possible & homepages can be given a name
+
+------ v 5.18 --- 13. July 2007 ------
+-search also includes telephone number, mobile and fax
+-Db search now searches text fields instead of categories
+
+------ v 5.17 --- 7. July 2007 ------
+-some bugfixes
+
+------ v 5.16 --- 30. June 2007 ------
+-minor improvements & fixes
+-quotes in title possible now
+
+------ v 5.13 --- 21. June 2007 ------
+-improved security and other minor changes
+-added more details in account stats
+
+------ v 5.12 --- 16. June 2007 ------
+-Bluebox by Sequence, and some fixes
+
+------ v 5.11 --- 15. June 2007 ------
+-More Bluebox options
+
+------ v 5.10 --- 4. June 2007 ------
+-new reminder view & other minor improvements
+
+------ v 5.08 --- 14. May 2007 ------
+-user search & other minor improvements
+
+------ v 5.07 --- 8. May 2007 ------
+-breaking compatibility with non-UTF8, run etc-convert-to-utf.php to convert
+-user stats for admin
+-minor improvements
+
+------ v 5.06 --- 6. May 2007 ------
+-UTF8 bugfixes and minor improvements
+
+------ v 5.05 --- 24. April 2007 ------
+-RSS Feeds bugfix
+-Random RSS Feeds & Random Note element for homepages
+
+------ v 5.04 --- 23. April 2007 ------
+-ascent speed now dropdown box
+-priority becomes sequence
+-encoding bugfixes, UTF8 now standard
+
+------ v 5.01 --- 15. April 2007 ------
+-db backup changed
+-user email reminder improved
+
+------ v 5.00 --- 10. April 2007 ------
+-unlimited rss feeds can be added
+-reminder home page defaults changed
+
+------ v 4.98 --- 6. April 2007 ------
+-setup changed
+-other minor improvements
+
+------ v 4.97 --- 28. March 2007 ------
+-minor design changes
+
+------ v 4.96 --- 25. March 2007 ------
+-own templates for the weblog possible
+-link list shows if link is private or public
+-cache problem fixed
+-minor improvements
+
+------ v 4.93 --- 4. March 2007 ------
+-own Google Adsense ID can be included
+-status window intro changed
+-minor improvements
+
+------ v 4.91 --- 7. February 2007 ------
+-added two new backgrounds for themes
+
+------ v 4.90 --- 6. February 2007 ------
+-gzip compression can be switched off
+
+------ v 4.89 --- 17. January 2007 ------
+-added new diagonal stripes background for themes
+
+------ v 4.88 --- 16. January 2007 ------
+-font size can be customized
+
+------ v 4.86 --- 5. January 2007 ------
+-DB added select and checkbox fields in view mode
+
+------ v 4.85 --- 31. December 2006 ------
+-new user notification
+-instant messages shows previous msg
+
+------ v 4.82 --- 24. December 2006 ------
+-instant message facility
+-public blog search
+-added online status "permanently offline"
+-RSS feeds for blog
+-blog comment email notification
+
+------ v 4.73 --- 18. December 2006 ------
+-increased compatibility
+
+------ v 4.71 --- 13. December 2006 ------
+-moved search bar to bottom
+-minor fixes and improvements
+
+------ v 4.70 --- 2. December 2006 ------
+-text fields can be added to database
+-minor fixes & improvements
+
+------ v 4.67 --- 21. November 2006 ------
+-file upload size customizable
+-minor fixes & improvements
+-setup improved
+
+------ v 4.65 --- 14. November 2006 ------
+-fixed RSS problem if no fopen possible
+-more newsletter options
+-allow file upload for specific user
+-front page can be customized
+
+------ v 4.62 --- 10. November 2006 ------
+-file upload can now be disabled
+
+------ v 4.61 --- 5. November 2006 ------
+-minor improvements
+
+------ v 4.59 --- 29. October 2006 ------
+-improved security
+-blog spam protection
+
+------ v 4.58 --- 22. October 2006 ------
+-minor improvements
+-quicker deletion
+
+------ v 4.57 --- 19. October 2006 ------
+-bugfixes
+-minor improvements
+-better security (SQL Injections)
+
+------ v 4.54 --- 10. October 2006 ------
+-live chat with sound
+-minor improvements
+
+------ v 4.46 --- 7. October 2006 ------
+-home settings form reorganized
+-minor improvements
+
+------ v 4.45 --- 5. October 2006 ------
+-setup file improved
+-better security for upload module
+-theme presets
+
+------ v 4.40 --- 1. October 2006 ------
+-backup facility
+-online status can be changed
+-easier to add categories
+-spellcheck to blog added
+
+------ v 4.30 --- 25. September 2006 ------
+-reminder email function added
+-files which are not images can now be uploaded
+-added database setup file
+-date format can be customized
+-external text renamed to notes
+
+------ v 4.20 --- 19. September 2006 ------
+-ajax live chat added
+
+------ v 4.11 --- 31. August 2006 ------
+-minor improvements and bug fixes
+
+------ v 4.10 --- 22. August 2006 ------
+-live chat improvements and other
+
+------ v 4.09 --- 9. August 2006 ------
+-bug fixes
+
+------ v 4.08 --- 27. July 2006 ------
+-live chat redesigned
+-bug fixes and minor improvements
+
+------ v 4.07 --- 19. July 2006 ------
+-bug fixes and minor improvements
+
+------ v 4.06 --- 14. July 2006 ------
+-bug fixes and minor improvements
+
+------ v 4.05 --- 11. July 2006 ------
+-live chat transcripts can be accessed and deleted
+-character encoding can be customized
+
+------ v 4.01 --- 7. July 2006 ------
+-initiate chat within community by any user
+-script works without .htaccess settings
+-minor improvements
+
+------ v 4.00 --- 1. July 2006 ------
+-project first made public

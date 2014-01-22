@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blue Smiley Organizer - <?php if (isset($title)) { echo $title; } ?></title>
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<div align="center">
+
+<table border=0 width="900" cellpadding="0" cellspacing="0">
+
+<tr><td style="background-color:#cdcdcd;" colspan="3" height="1"></td></tr>
+
+<tr><td valign="top" width="22%" style="background-color:#FFFFFF; padding: 20px 0px 20px 28px; background-image: url(pics/bg.jpg); background-repeat: repeat-y; background-position: left">
+
+<a href="index.php"><img src="pics/logo.gif" border="0" height="48" border="167" alt="Bookmark Manager"></a><p>
+
+<form action="auth.php" method="post" target="_top">
+
+<table cellpadding="5" cellspacing="0" border=1 class="pastel" width="88%">
+
+<tr><td align="right"><strong>Username:</strong></td><td><input type="text" name="username" value="<?php if (isset($_COOKIE['remember_username'])) { echo $_COOKIE['remember_username']; } ?>" size=8 class="intro"></td></tr>
+
+<tr><td align="right"><strong>Password:</strong></td><td><input type="password" name="pw" size=8 class="intro"></td></tr>
+
+<tr><td colspan=2 align="center"><input type="submit" VALUE="Log in" class="intro"></td></tr>
+
+<tr><td colspan=2 align="center"><a href="password-reminder.php">Forgot Password?</a></td></tr>
+
+</table>
+</form>
+
+<img src="pics/diamond.gif" alt=""> <a href="index.php">Home</a><br>
+
+<img src="pics/diamond.gif" alt=""> <a href="sign-up.php" rel="nofollow">Sign Up</a><br>
+
+<img src="pics/diamond.gif" alt=""> <a href="auth.php?guest=1" rel="nofollow" target="_top">Demo Login</a><br>
+
+<img src="pics/diamond.gif" alt=""> <a href="contact-us.php" rel="nofollow">Contact Us</a><br>
+
+<br>
+
+<a href="live-support.php?userid=1" rel="nofollow"><img src="status-image.php?userid=1" border="0" alt="Live Support"></a>
+
+</td>
+
+<td width="2%" style="background-color: #FFFFFF; background-image: url(pics/bg2.jpg); background-repeat: repeat-y; background-position: right"></td>
+
+<td valign="top" width="75%" style="background-color: #FFFFFF; padding: 20px; background-image: url(pics/bg3.jpg); background-repeat: repeat-y; background-position: right"><?php if (isset($header)) { echo '<h1>'.$header.'</h1>'; } ?><?php if (isset($main)) { echo $main; } ?></td>
+
+</tr>
+
+<tr><td style="background-color:#cdcdcd;" colspan="3" height="1"></td></tr>
+</table>
+
+</div>
+
+</body>
+</html>

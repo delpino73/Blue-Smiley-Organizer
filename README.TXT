@@ -1,0 +1,1 @@
+Please check the file README.TXT in folder "documentation" for installation instructions

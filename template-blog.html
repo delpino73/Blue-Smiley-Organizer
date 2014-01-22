@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<?php echo $head; ?>
+<title><?php echo $title; ?></title>
+<link href="style-blog.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="main_content">
+
+<div class="content"><br>
+
+<?php echo $main; ?><br><br>
+
+<?php echo $scrollbar; ?>
+</div>
+
+<div class="menu"><br>
+
+<div class="menu_title">Main</div>
+<ul>
+<li><a href="<?php echo $about_me_link; ?>">About me</a></li>
+<li><a href="contact-me-blog.php?username=<?php echo $username; ?>">Contact me</a></li>
+</ul>
+
+<div class="menu_title">Categories</div>
+<ul>
+<?php echo $categories; ?>
+</ul>
+
+<?php echo $search_form; ?>
+
+<?php echo $rss_feed; ?>
+
+</div>
+
+<div id="clear"></div>
+
+</div>
+
+<div id="footer"><strong>Powered by</strong> <a href="http://www.bookmark-manager.com/">Blue Smiley Organizer</a>
+
+<br><br>
+
+<?php echo _BANNER_AD_BLOG ?>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
