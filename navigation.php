@@ -16,7 +16,7 @@ $userid=$base_instance->get_userid();
 <script language="JavaScript" type="text/javascript">
 
 /***********************************************
-* Dynamic Countdown script- © Dynamic Drive (http://www.dynamicdrive.com)
+* Dynamic Countdown script- ï¿½ Dynamic Drive (http://www.dynamicdrive.com)
 * This notice MUST stay intact for legal use
 * Visit http://www.dynamicdrive.com/ for this script and 100s more.
 ***********************************************/
@@ -80,12 +80,12 @@ else if (document.getElementById) window.onload=do_onload
 <li><a href="show-database-categories.php" onMouseover="expandcontent('database', this)" target="main">Database</a></li>
 <li><a href="show-blog.php" onMouseover="expandcontent('blog',this)" target="main">Blog</a></li>
 <li><a href="edit-search.php" onMouseover="expandcontent('search', this)" target="main">Search</a></li>
-<li><a href="navigation.php" onMouseover="expandcontent('misc',this)" target="_self">Misc</a></li>
+<li><a href="javascript:expandcontent('misc',this)" onMouseover="expandcontent('misc',this)" target="_self">Misc</a></li>
 <li><a href="logout.php" onMouseover="expandcontent('logout',this)" target="_top">Exit</a></li>
 <?php if ($userid==_GUEST_USERID) { ?>
 <li><a href="logout.php?signup=1" onMouseover="expandcontent('logout', this)" target="_top"><font color="#2f2f2f">SIGN UP</font></a></li>
 <?php } if ($userid==_ADMIN_USERID) { ?>
-<li><a href="navigation.php" onMouseover="expandcontent('admin', this)" target="_self">Admin</a></li>
+<li><a href="javascript:expandcontent('admin', this)" onMouseover="expandcontent('admin', this)" target="_self">Admin</a></li>
 <?php } ?>
 </ul>
 </td>
