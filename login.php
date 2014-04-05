@@ -6,7 +6,7 @@ $header='Login';
 
 if (isset($_GET['invalid_password'])) { $text='Password is incorrect. Please try again or go to the password reminder <a href="password-reminder.php">here</a>.<p>'; } else { $text=''; }
 
-$main=$text.'<form action="auth.php" method="post">
+$main=$text.'<form action="auth.php" method="post" target="_top">
 
 <table cellpadding="5" cellspacing="0" border=1 class="pastel" bgcolor="#ffffff">
 
