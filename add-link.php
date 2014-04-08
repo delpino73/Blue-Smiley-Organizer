@@ -228,7 +228,7 @@ $freq_text='<table cellpadding="5"><tr><td><input type="Radio" name="mode" value
 
 $html_instance->add_form_field(array('TYPE'=>'label','TEXT1'=>'Show Link in Bluebox:','TEXT2'=>"$freq_text",'SECTIONS'=>2));
 
-$freq_text2='<p>Days: <input type="text" name="number_of_days" size="2" value="'.$number_of_days.'"> &nbsp; Hours: <input type="text" name="number_of_hours" size="2" value="'.$number_of_hours.'"> &nbsp; Minutes: <input type="text" name="number_of_mins" size="2" value="'.$number_of_mins.'">';
+$freq_text2='<p>Days: <input type="text" name="number_of_days" size="3" value="'.$number_of_days.'"> &nbsp; Hours: <input type="text" name="number_of_hours" size="3" value="'.$number_of_hours.'"> &nbsp; Minutes: <input type="text" name="number_of_mins" size="3" value="'.$number_of_mins.'">';
 
 $html_instance->add_form_field(array('TYPE'=>'label','TEXT1'=>'','TEXT2'=>"$freq_text2",'SECTIONS'=>2));
 
