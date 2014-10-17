@@ -57,7 +57,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['KNOWLEDGE']['CATEGORY'].' (title,user) VALUES ("'.sql_safe($new_category).'",'.$userid.')');
 
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 
 	}
 
@@ -67,7 +67,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['KNOWLEDGE']['MAIN'].' (datetime,text,title,user,category,value,public) VALUES ("'.sql_safe($datetime).'","'.sql_safe($text).'","'.sql_safe($title).'",'.$userid.','.$category_id.','.$value.','.$public.')');
 
-	$knowledge_id=mysql_insert_id();
+	$knowledge_id=mysqli_insert_id($base_instance->db_link);
 
 	$data=$base_instance->get_data('SELECT title FROM '.$base_instance->entity['KNOWLEDGE']['CATEGORY'].' WHERE user='.$userid.' AND ID='.$category_id);
 	$cat_title=$data[1]->title;

@@ -51,7 +51,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['FILE']['CATEGORY'].' (title,user) VALUES ("'.sql_safe($new_category).'",'.$userid.')');
 
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 	$new_category='';
 
 	}
@@ -89,7 +89,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['FILE']['MAIN'].' (datetime,text,title,filename,user,category,public,token) VALUES ("'.sql_safe($datetime).'","'.sql_safe($text).'","'.sql_safe($title).'","'.sql_safe($filename).'",'.$userid.','.$category_id.','.$public.',"'.$token.'")');
 
-	$file_id=mysql_insert_id();
+	$file_id=mysqli_insert_id($base_instance->db_link);
 
 	$data=$base_instance->get_data("SELECT title FROM {$base_instance->entity['FILE']['CATEGORY']} WHERE user='$userid' AND ID='$category_id'");
 	$cat_title=$data[1]->title;

@@ -18,8 +18,7 @@ class base {
 
 		require 'inc.vars.php';
 
-		@mysql_connect(_DB_HOST,_DB_USER,_DB_PW) or die('Could not connect to database');
-		mysql_select_db(_DB_NAME) or die('Could not find database');
+		$this->db_link=mysqli_connect(_DB_HOST,_DB_USER,_DB_PW,_DB_NAME) or die('Error '.mysqli_error($link));
 
 		$sid=isset($_COOKIE['sid']) ? (int)$_COOKIE['sid'] : 0;
 
@@ -31,6 +30,8 @@ class base {
 
 				setcookie('sid','','631213200','/'); # delete cookie
 				$this->user=0;
+
+				date_default_timezone_set('Europe/London');
 
 			} else {
 
@@ -103,7 +104,7 @@ class base {
 
 		if (_DEBUG==1 && $this->user==_ADMIN_USERID) { echo $statement.'<br>'; }
 
-		$res=mysql_query($statement);
+		$res=mysqli_query($this->db_link, $statement);
 
 		if (!$res) { $this->error_report($statement); }
 
@@ -115,17 +116,17 @@ class base {
 
 		if ((_DEBUG==1 or $debug==1) && $this->user==_ADMIN_USERID) { echo $statement.'<br>'; }
 
-		$res=mysql_query($statement);
+		$res=mysqli_query($this->db_link, $statement);
 
 		if (!$res) { $this->error_report($statement); }
 
-		$rows=mysql_num_rows($res);
+		$rows=mysqli_num_rows($res);
 
 		for ($index=1; $index <= $rows; $index++) {
-			$data[$index]=mysql_fetch_object($res);
+			$data[$index]=mysqli_fetch_object($res);
 		}
 
-		mysql_free_result($res);
+		mysqli_free_result($res);
 
 		if (isset($data)) { return $data; }
 
@@ -339,8 +340,8 @@ class base {
 function sql_safe($value) {
 
 	if (get_magic_quotes_gpc()) { $value=stripslashes($value); }
-	if (function_exists('mysql_real_escape_string')) { $value=mysql_real_escape_string($value); }
-	else { $value=addslashes($value); }
+
+	$value=addslashes($value);
 
 	return $value;
 

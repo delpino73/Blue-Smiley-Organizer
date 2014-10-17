@@ -37,7 +37,7 @@ else if (isset($_POST['save_it'])) {
 
 	$base_instance->query("INSERT INTO {$base_instance->entity['DATABASE']['SELECT_FIELDS']} (user,title,category_id) VALUES ($userid,'$title_select_field',$category_id)");
 
-	$select_field_id=mysql_insert_id();
+	$select_field_id=mysqli_insert_id($base_instance->db_link);
 
 	for ($index=1; $index <= $number_of_fields; $index++) {
 

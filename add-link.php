@@ -140,7 +140,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['LINK']['CATEGORY'].' (title,user,parent_id) VALUES ("'.sql_safe($new_category).'",'.$userid.','.$category_id.')');
 
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 
 	}
 
@@ -148,7 +148,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['LINK']['MAIN'].' (datetime,subtitle,url,user,category,public,title,frequency,frequency_mode,last_visit,notes,keywords,speed,sequence) VALUES ("'.sql_safe($datetime).'","'.sql_safe($subtitle).'","'.sql_safe($url_save).'",'.$userid.','.$category_id.','.$public.',"'.sql_safe($title).'",'.$freq_total.','.$mode.',"'.$datetime.'","'.sql_safe($notes).'","'.sql_safe($keywords).'","'.$speed.'","'.$sequence.'")');
 
-	$link_id=mysql_insert_id();
+	$link_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Link saved','<a href="add-link.php?category_id='.$category_id.'">[Add more]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">[Delete]</a> &nbsp;&nbsp; <a href="send-content.php?link_id='.$link_id.'">[Send]</a> &nbsp;&nbsp; <a href="show-links.php">[Show all]</a><p>');
 

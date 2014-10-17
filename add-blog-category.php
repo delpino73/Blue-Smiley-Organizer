@@ -31,7 +31,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['BLOG']['CATEGORY'].' (title,user) VALUES ("'.$title.'",'.$userid.')');
 
-	$blog_id=mysql_insert_id();
+	$blog_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Blog Category saved','<a href="add-blog.php?category_id='.$blog_id.'">[Add Blog]</a> &nbsp;&nbsp; <a href="add-blog-category.php">[Add Category]</a> &nbsp;&nbsp; <a href="edit-blog-category.php?category_id='.$blog_id.'">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-blog-category.php?category_id='.$blog_id.'\',\'\',\'width=450,height=200,top=100,left=100\'))">[Delete]</a><p><a href="show-blog-categories.php">[Show Blog Categories]</a>');
 

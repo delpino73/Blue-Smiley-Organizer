@@ -48,7 +48,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['CONTACT']['CATEGORY'].' (title,user) VALUES ("'.sql_safe($new_category).'",'.$userid.')');
 
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 
 	}
 
@@ -63,7 +63,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['CONTACT']['MAIN'].' (datetime,user,firstname,lastname,email,telephone,fax,mobile,address,notes,company,url,category,public) VALUES ("'.sql_safe($datetime).'",'.$userid.',"'.sql_safe($firstname).'","'.sql_safe($lastname).'","'.sql_safe($email).'","'.sql_safe($telephone).'","'.sql_safe($fax).'","'.sql_safe($mobile).'","'.sql_safe($address).'","'.sql_safe($notes).'","'.sql_safe($company).'","'.sql_safe($url).'",'.$category_id.','.$public.')');
 
-	$contact_id=mysql_insert_id();
+	$contact_id=mysqli_insert_id($base_instance->db_link);
 
 	$data=$base_instance->get_data("SELECT title FROM {$base_instance->entity['CONTACT']['CATEGORY']} WHERE user='$userid' AND ID='$category_id'");
 	$cat_title=$data[1]->title;

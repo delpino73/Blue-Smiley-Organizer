@@ -16,7 +16,7 @@ $title_text_field=sql_safe($_POST['title_text_field']);
 
 $base_instance->query("INSERT INTO {$base_instance->entity['DATABASE']['TEXT_FIELDS']} (user,title,category_id) VALUES ($userid,'$title_text_field',$category_id)");
 
-$field_id=mysql_insert_id();
+$field_id=mysqli_insert_id($base_instance->db_link);
 
 $base_instance->show_message('Field saved','<a href="add-database-number-field.php?category_id='.$category_id.'">[Add Number Field]</a>&nbsp;&nbsp; <a href="add-database-text-field.php?category_id='.$category_id.'">[Add Text Field]</a><p>
 <a href="add-database-select-field.php?category_id='.$category_id.'">[Add Select Field]</a> &nbsp;&nbsp; <a href="add-database-checkbox-field.php?category_id='.$category_id.'">[Add Checkbox Field]</a><p><a href="add-database-data.php?category_id='.$category_id.'">[Add Data]</a> &nbsp;&nbsp; <a href="edit-database-text-field.php?text_field_id='.$field_id.'">[Edit Field]</a> &nbsp;&nbsp; <a href="show-database-data.php?category_id='.$category_id.'">[Show all Data]</a>');

@@ -32,7 +32,7 @@ if (isset($_POST['save'])) {
 	if ($data) { $main.='<li> Username already taken'; $error=1; }
 
 	if (strstr($username,' ')) { $main.='<li> No spaces allowed in username'; $error=1; }
-	else if ($username && !preg_match('/^[0-9a-zA-ZäöüßÖÜÄ]+$/',$username)) { $main.='<li> Only numbers and letters in username allowed'; $error=1; }
+	else if ($username && !preg_match('/^[0-9a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]+$/',$username)) { $main.='<li> Only numbers and letters in username allowed'; $error=1; }
 
 	if (strlen($username)>16) { $main.='<li> Username is too long, only 16 characters allowed'; $error=1; }
 
@@ -375,7 +375,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['USER']['MAIN'].' (datetime, email, username, firstname, lastname, user_password, IP, logins, country, lastlogin, font_face_main, font_face_navigation, font_size, background, color_main, color_navigation, newsletter_opt_in, dateformat, allow_file_upload, about_me, online_status) VALUES ("'.$datetime.'","'.$email.'","'.$username.'","'.$firstname.'","'.$lastname.'","'.$secure_password.'","'.$IP.'",0,"'.$country.'","'.$datetime.'",1,1,2,14,1,1,"'.$newsletter.'",1,"'.$allow_file_upload.'","",1)');
 
-	$userid=mysql_insert_id();
+	$userid=mysqli_insert_id($base_instance->db_link);
 
 	if (empty($e1)) { $e1=0; }
 	if (empty($e2)) { $e2=0; }

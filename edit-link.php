@@ -107,7 +107,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['LINK']['CATEGORY'].' (title,user,parent_id) VALUES ("'.sql_safe($new_category).'",'.$userid.','.$category_id.')');
 
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 
 	}
 

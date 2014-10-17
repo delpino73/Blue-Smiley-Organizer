@@ -32,7 +32,7 @@ $number_of_fields=sql_safe($_POST['number_of_fields']);
 
 	$base_instance->query("INSERT INTO {$base_instance->entity['DATABASE']['CHECKBOX_FIELDS']} (user,title,category_id) VALUES ($userid,'$title_checkbox_field',$category_id)");
 
-	$checkbox_field_id=mysql_insert_id();
+	$checkbox_field_id=mysqli_insert_id($base_instance->db_link);
 
 	for ($index=1; $index <= $number_of_fields; $index++) {
 

@@ -32,7 +32,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['DATABASE']['CATEGORY'].' (title,user,text) VALUES ("'.$title.'",'.$userid.',"'.sql_safe($text).'")');
 
-	$cat_id=mysql_insert_id();
+	$cat_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Database Category saved','<a href="add-database-number-field.php?category_id='.$cat_id.'">[Add Number Field]</a>&nbsp;&nbsp; <a href="add-database-text-field.php?category_id='.$cat_id.'">[Add Text Field]</a><p>
 <a href="add-database-select-field.php?category_id='.$cat_id.'">[Add Select Field]</a> &nbsp;&nbsp; <a href="add-database-checkbox-field.php?category_id='.$cat_id.'">[Add Checkbox Field]</a><p><a href="add-database-data.php?category_id='.$cat_id.'">[Add Data]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-database-category.php?category_id='.$cat_id.'\',\'\',\'width=450,height=200,top=100,left=100\'))">[Delete]</a> &nbsp;&nbsp; <a href="edit-database-category.php?category_id='.$cat_id.'">[Edit]</a>');

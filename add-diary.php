@@ -58,7 +58,7 @@ if (isset($_POST['save'])) {
 
 	$today=date('Y-m-d'); $base_instance->query('INSERT INTO '.$base_instance->entity['DIARY']['MAIN'].' (date,text,title,user,last_shown) VALUES ("'.sql_safe($date).'","'.sql_safe($diary_text).'","'.sql_safe($title).'",'.$userid.',"'.$today.'")');
 
-	$diary_id=mysql_insert_id(); }
+	$diary_id=mysqli_insert_id($base_instance->db_link); }
 
 	$base_instance->show_message('Diary saved','<script language="JavaScript" type="text/javascript">function createRequestObject(){try{var requester=new XMLHttpRequest();}catch(error){try{var requester=new ActiveXObject("Microsoft.XMLHTTP");}catch(error){return false;}} return requester;}var http=createRequestObject();function DelDiary(item){if(confirm("Delete Diary?")){http.open(\'get\',\'delete-diary.php?item=\'+item); http.send(null);}}</script>
 

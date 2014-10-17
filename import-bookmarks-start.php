@@ -170,7 +170,7 @@ function import_bookmarks($userid, $userfile) {
 	else { # create new folder, as link has no folder
 
 	$base_instance->query("INSERT INTO organizer_link_category (title,user,parent_id) VALUES ('main',$userid,0)");
-	$main_folder=mysql_insert_id();
+	$main_folder=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->query("INSERT INTO organizer_link (datetime,url,user,category,public,title,frequency,last_visit) VALUES ('$added','$url',$userid,'$main_folder',1,'$title','2592000','$last_visit')");
 
@@ -194,7 +194,7 @@ function import_bookmarks($userid, $userfile) {
 	$name=sql_safe($name);
 
 	$base_instance->query("INSERT INTO organizer_link_category (title,user,parent_id) VALUES ('$name',$userid,0)");
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 
 	array_push($stack, $category_id);
 
@@ -208,7 +208,7 @@ function import_bookmarks($userid, $userfile) {
 
 	$base_instance->query("INSERT INTO organizer_link_category (title,user,parent_id) VALUES ('$name',$userid,'$parent_id')");
 
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 
 	array_push($stack, $category_id);
 

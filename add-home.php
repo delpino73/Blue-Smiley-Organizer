@@ -41,7 +41,7 @@ if (isset($_REQUEST['save'])) {
 
 	$base_instance->query("INSERT INTO {$base_instance->entity['HOME']['MAIN']} (user,title,element1,element2,element3,element4,element5,element6,element7,element8,element9,element10,element11,element12) VALUES ($userid,'$title','$element1','$element2','$element3','$element4','$element5','$element6','$element7','$element8','$element9','$element10','$element11','$element12')");
 
-	$home_id=mysql_insert_id();
+	$home_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Homepage saved','<a href="edit-home.php?home_id='.$home_id.'">[Edit Homepage]</a> &nbsp;&nbsp;&nbsp; <a href="add-home.php">[Add Homepage]</a> &nbsp;&nbsp;&nbsp; <a href="home.php?home_id='.$home_id.'">[Show Homepage]</a><p><a href="show-home.php">[Show all Homepages]</a>
 

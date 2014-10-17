@@ -30,7 +30,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['PASSWORD']['MAIN'].' (create_time,email,password) VALUES ("'.$now.'","'.sql_safe($email).'","'.$password.'")');
 
-	$insert_id=mysql_insert_id();
+	$insert_id=mysqli_insert_id($base_instance->db_link);
 
 	# delete old entries
 

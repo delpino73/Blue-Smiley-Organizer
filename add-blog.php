@@ -58,7 +58,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['BLOG']['CATEGORY'].' (title,user) VALUES ("'.sql_safe($new_category).'",'.$userid.')');
 
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 
 	}
 
@@ -68,7 +68,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['BLOG']['MAIN'].' (datetime,text,title,user,category) VALUES ("'.sql_safe($datetime).'","'.sql_safe($text).'","'.sql_safe($title).'",'.$userid.','.$category_id.')');
 
-	$blog_id=mysql_insert_id();
+	$blog_id=mysqli_insert_id($base_instance->db_link);
 
 	$title=stripslashes($title);
 

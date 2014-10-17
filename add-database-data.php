@@ -35,7 +35,7 @@ if (isset($_POST['save_data'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['DATABASE']['MAIN'].' (datetime,day,month,year,title,text,user,category_id) VALUES ("'.$date.' '.$time.'",'.$day.','.$month.','.$year.',"'.sql_safe($title).'","'.sql_safe($text).'",'.$userid.','.$category_id.')');
 
-	$insert_id=mysql_insert_id();
+	$insert_id=mysqli_insert_id($base_instance->db_link);
 
 	# insert checkbox values
 

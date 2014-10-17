@@ -62,7 +62,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['REMINDER']['WEEKDAY'].' (datetime,what_time,day_of_the_week,title,user,last_reminded,homepage,popup,text) VALUES ("'.sql_safe($datetime).'","'.$time.'","'.$all_days.'","'.sql_safe($title).'",'.$userid.',"1970-01-01",'.$homepage.','.$popup.',"'.sql_safe($text).'")');
 
-	$reminder_id=mysql_insert_id();
+	$reminder_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Reminder saved','<a href="add-reminder-weekday.php">[Add more]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'edit-reminder-weekday.php?reminder_id='.$reminder_id.'\',\'\',\'width=600,height=500,top=100,left=100\'))">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-reminder-weekday.php?reminder_id='.$reminder_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">[Delete]</a> &nbsp;&nbsp; <a href="show-reminder-weekday.php">[Show all]</a><p>');
 

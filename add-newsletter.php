@@ -34,7 +34,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['NEWSLETTER']['MAIN'].' (datetime,text,subject) VALUES ("'.sql_safe($datetime).'","'.sql_safe($text).'","'.sql_safe($subject).'")');
 
-	$newsletter_id=mysql_insert_id();
+	$newsletter_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Newsletter saved','<script language="JavaScript" type="text/javascript">function createRequestObject(){try{var requester=new XMLHttpRequest();}catch(error){try{var requester=new ActiveXObject("Microsoft.XMLHTTP");}catch(error){return false;}} return requester;}var http=createRequestObject();function DelNewsletter(item){if(confirm("Delete Newsletter?")){http.open(\'get\',\'delete-newsletter.php?item=\'+item); http.send(null);}}</script>
 

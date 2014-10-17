@@ -59,7 +59,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['TO_DO']['CATEGORY'].' (title,user) VALUES ("'.sql_safe($new_category).'",'.$userid.')');
 
-	$category_id=mysql_insert_id();
+	$category_id=mysqli_insert_id($base_instance->db_link);
 
 	}
 
@@ -69,7 +69,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['TO_DO']['MAIN'].' (datetime,text,title,user,priority,category,public,status) VALUES ("'.sql_safe($datetime).'","'.sql_safe($text).'","'.sql_safe($title).'",'.$userid.','.$priority.','.$category_id.','.$public.','.$status.')');
 
-	$to_do_id=mysql_insert_id();
+	$to_do_id=mysqli_insert_id($base_instance->db_link);
 
 	$data=$base_instance->get_data("SELECT title FROM {$base_instance->entity['TO_DO']['CATEGORY']} WHERE user='$userid' AND ID='$category_id'");
 	$cat_title=$data[1]->title;

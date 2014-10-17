@@ -31,7 +31,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['CONTACT']['CATEGORY'].' (title,user) VALUES ("'.$title.'",'.$userid.')');
 
-	$contact_id=mysql_insert_id();
+	$contact_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Contact Category saved','<a href="add-contact.php?category_id='.$contact_id.'">[Add Contact]</a> &nbsp;&nbsp; <a href="add-contact-category.php">[Add Category]</a> &nbsp;&nbsp; <a href="edit-contact-category.php?category_id='.$contact_id.'">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-contact-category.php?category_id='.$contact_id.'\',\'\',\'width=450,height=200,top=100,left=100\'))">[Delete]</a><p><a href="show-contact-categories.php">[Show Contact Categories]</a>');
 

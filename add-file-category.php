@@ -31,7 +31,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['FILE']['CATEGORY'].' (title,user) VALUES ("'.$title.'",'.$userid.')');
 
-	$cat_id=mysql_insert_id();
+	$cat_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('File Category saved','<a href="add-file.php?category_id='.$cat_id.'">[Upload]</a> &nbsp;&nbsp; <a href="add-file-category.php">[Add Category]</a> &nbsp;&nbsp; <a href="edit-file-category.php?category_id='.$cat_id.'">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-file-category.php?category_id='.$cat_id.'\',\'\',\'width=450,height=200,top=100,left=100\'))">[Delete]</a><p><a href="show-file-categories.php">[Show File Categories]</a>');
 

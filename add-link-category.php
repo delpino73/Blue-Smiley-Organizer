@@ -31,7 +31,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['LINK']['CATEGORY'].' (title,user,parent_id) VALUES ("'.sql_safe($title).'",'.$userid.','.$category_id.')');
 
-	$cat_id=mysql_insert_id();
+	$cat_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Link Category saved','<a href="add-link.php?category_id='.$cat_id.'">[Add Link]</a> &nbsp;&nbsp; <a href="add-link-category.php">[Add Category]</a> &nbsp;&nbsp; <a href="edit-link-category.php?category_id='.$cat_id.'">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-link-category.php?category_id='.$cat_id.'\',\'\',\'width=450,height=200,top=100,left=100\'))">[Delete]</a><p><a href="show-link-categories.php">[Show Link Categories]</a>');
 

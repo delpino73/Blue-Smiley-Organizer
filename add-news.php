@@ -32,7 +32,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['NEWS']['MAIN'].' (datetime,text,title) VALUES ("'.sql_safe($datetime).'","'.sql_safe($text).'","'.sql_safe($title).'")');
 
-	$news_id=mysql_insert_id();
+	$news_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('News saved','<a href="edit-news.php?news_id='.$news_id.'">[Edit]</a> &nbsp;&nbsp; <a href="show-news.php">[Show all]</a>');
 

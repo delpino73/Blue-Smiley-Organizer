@@ -54,7 +54,7 @@ if (isset($_POST['save'])) {
 
 	$base_instance->query('INSERT INTO '.$base_instance->entity['REMINDER']['DAYS'].' (datetime, what_time, title, user, frequency, homepage, popup, last_reminded, text) VALUES ("'.sql_safe($datetime).'","'.$time.'","'.sql_safe($title).'",'.$userid.','.$frequency.','.$homepage.','.$popup.',"'.$today.'","'.sql_safe($text).'")');
 
-	$reminder_id=mysql_insert_id();
+	$reminder_id=mysqli_insert_id($base_instance->db_link);
 
 	$base_instance->show_message('Reminder saved','<a href="add-reminder-days.php">[Add more]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'edit-reminder-days.php?reminder_id='.$reminder_id.'\',\'\',\'width=600,height=500,top=100,left=100\'))">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-reminder-days.php?reminder_id='.$reminder_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">[Delete]</a> &nbsp;&nbsp; <a href="show-reminder-days.php">[Show all]</a><p>');
 
