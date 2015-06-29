@@ -22,47 +22,47 @@ if ($username && $pw) {
 	if (!$data) { echo 'Wrong password, update your "Add Link" URL. Go to <strong>Misc > Help > Misc</strong> to get updated links.'; exit; }
 	else {
 
-	$userid=$data->ID;
-	$lastlogin=$data->lastlogin;
-	$timezone=$data->timezone;
-	$font_face_main=$data->font_face_main;
-	$font_face_navigation=$data->font_face_navigation;
-	$font_size=$data->font_size;
-	$color_main=$data->color_main;
-	$color_navigation=$data->color_navigation;
-	$background=$data->background;
+		$userid=$data->ID;
+		$lastlogin=$data->lastlogin;
+		$timezone=$data->timezone;
+		$font_face_main=$data->font_face_main;
+		$font_face_navigation=$data->font_face_navigation;
+		$font_size=$data->font_size;
+		$color_main=$data->color_main;
+		$color_navigation=$data->color_navigation;
+		$background=$data->background;
 
-	# check if session exists
+		# check if session exists
 
-	$res=mysql_query('SELECT session_id FROM organizer_session WHERE user='.$userid);
-	$data=mysql_fetch_object($res);
+		$res=mysql_query('SELECT session_id FROM organizer_session WHERE user='.$userid);
+		$data=mysql_fetch_object($res);
 
-	if (!empty($data)) { $sid=$data->session_id; } else { $sid=''; }
+		if (!empty($data)) { $sid=$data->session_id; } else { $sid=''; }
 
-	if ($sid < 1) {
+		if ($sid < 1) {
 
-	$sid=mt_rand(1000000,9999999);
-	$timestamp=time();
+			$sid=mt_rand(1000000,9999999);
+			$timestamp=time();
 
-	$res=mysql_query("INSERT INTO organizer_session (session_id,create_time,last_active,user,lastlogin,background,color_navigation,color_main,font_face_main,font_face_navigation,font_size,timezone) VALUES ($sid,$timestamp,$timestamp,$userid,'$lastlogin',$background,$color_navigation,$color_main,$font_face_main,$font_face_navigation,$font_size,$timezone)");
+			$res=mysql_query("INSERT INTO organizer_session (session_id,create_time,last_active,user,lastlogin,background,color_navigation,color_main,font_face_main,font_face_navigation,font_size,timezone) VALUES ($sid,$timestamp,$timestamp,$userid,'$lastlogin',$background,$color_navigation,$color_main,$font_face_main,$font_face_navigation,$font_size,$timezone)");
 
-	}
+		}
 
-	if (!$res) { echo 'sql error'; exit; }
+		if (!$res) { echo 'sql error'; exit; }
 
-	setcookie('sid',$sid);
+		setcookie('sid',$sid);
 
-	preg_match("/http:\/\/([a-z0-9]+).([.a-z0-9-]+)/",$url,$dd);
+		if (substr($url,0,8)=='https://') { preg_match("/https:\/\/([a-z0-9]+).([.a-z0-9-]+)/",$url,$dd); }
+		else if (substr($url,0,7)=='http://') { preg_match("/http:\/\/([a-z0-9]+).([.a-z0-9-]+)/",$url,$dd); }
 
-	#if ($dd[1]!='www') { $title=$dd[1].'.'.$dd[2]; } else { $title=$dd[2]; }
-	if (empty($dd)) { $title=''; } else if ($dd[1]!='www') { $title=$dd[1].'.'.$dd[2]; } else { $title=$dd[2]; }
+		if (empty($dd)) { $title=''; } else if ($dd[1]!='www') { $title=$dd[1].'.'.$dd[2]; } else { $title=$dd[2]; }
 
-	$title=ucwords($title);
+		$title=ucwords($title);
 
-	$e1=base64_encode($title);
-	$e2=base64_encode($url);
+		$e1=base64_encode($title);
+		$e2=base64_encode($url);
 
-	header("Location: add-link.php?e1=$e1&e2=$e2");
+		header("Location: add-link.php?e1=$e1&e2=$e2");
 
 	}
 
