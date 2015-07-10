@@ -79,6 +79,6 @@ define('_SLOGAN','Blue Smiley Organizer');
 
 define('_EMAIL_ADVERT_TEXT','Learn a Language Online
 
-http://www.antosch-and-lin.com/');
+http://www.learnwitholiver.com/');
 
 ?>

@@ -13,7 +13,7 @@ $main=_FRONTPAGE_TEXT.'
 
 <iframe width="100%" height="100" scrolling="no" frameborder=0 marginheight="0" marginwidth="0" src="http://www.bookmark-manager.com/index-adverts.php"></iframe>
 
-<br><font color="#b3b3b3">Powered by <a href="http://www.bookmark-manager.com/" target="_blank"><u><font color="#b3b3b3">Blue Smiley Organizer v'._VERSION.'</font></u></a> - Copyright &copy; 2002-2011 by Oliver Antosch</font>';
+<br><font color="#b3b3b3">Powered by <a href="http://www.bookmark-manager.com/" target="_blank"><u><font color="#b3b3b3">Blue Smiley Organizer v'._VERSION.'</font></u></a> - Copyright &copy; 2002-2015 by Oliver Antosch</font>';
 
 require 'template.html';
 
