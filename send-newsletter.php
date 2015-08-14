@@ -14,7 +14,7 @@ $user_instance->check_for_admin();
 
 $newsletter_id=isset($_GET['newsletter_id']) ? (int)$_GET['newsletter_id'] : exit;
 $test=isset($_GET['test']) ? 1 : 0;
-$subscribed=isset($_GET['subscribed']) ? 1 : 0;
+$subscribed=isset($_GET['subscribed']) ? (int)$_GET['subscribed'] : 0;
 $all=isset($_GET['all']) ? 1 : 0;
 
 $data=$base_instance->get_data("SELECT * FROM {$base_instance->entity['NEWSLETTER']['MAIN']} WHERE ID=$newsletter_id");
@@ -31,40 +31,50 @@ else { echo 'Error'; exit; }
 $period_11=date('Y-m-d H:i:s',mktime(0,0,0, date('m')-11, date('d'),date('Y')));
 
 $html_instance->add_parameter(
-array('ENTITY'=>'USER',
-'WHERE'=>"$query",
-'ORDER_COL'=>'lastlogin',
-'ORDER_TYPE'=>'DESC',
-'MAXHITS'=>'999999999'
-));
+	array('ENTITY'=>'USER',
+		'WHERE'=>$query,
+		'ORDER_COL'=>'ID',
+		'ORDER_TYPE'=>'DESC',
+		'MAXHITS'=>'199'
+	));
 
 $data=$html_instance->get_items();
 
+if (empty($data)) { echo 'All done!'; exit; }
+elseif ($test==1) { echo '<a href="edit-newsletter.php?newsletter_id='.$newsletter_id.'">Edit Newsletter</a><br><br>'; }
+else { echo '<head><meta http-equiv="refresh" content="3;URL='.$_SERVER['PHP_SELF'].'?all='.$all.'&newsletter_id='.$newsletter_id.'&subscribed='.$subscribed.'"></head>'; }
+
 for ($index=1; $index <= sizeof($data); $index++) {
 
-unset($msg);
+	unset($msg);
 
-$ID=$data[$index]->ID;
-$username=$data[$index]->username;
-$email=$data[$index]->email;
-$lastlogin=$data[$index]->lastlogin;
+	$ID=$data[$index]->ID;
+	$username=$data[$index]->username;
+	$email=$data[$index]->email;
+	$lastlogin=$data[$index]->lastlogin;
 
-if ($lastlogin<"$period_11") { $warning=1; } else { $warning=0; }
+	if ($lastlogin < "$period_11") { $warning=1; } else { $warning=0; }
 
-echo "$ID: (warn: $warning) $username ($email)<br>";
+	echo "$ID: (warn: $warning) $username ($email)<br>";
 
-$mailheaders='From: '._ADMIN_SENDER_NAME.' <'._ADMIN_EMAIL.'>'."\n";
-$mailheaders.='Reply-To: '._ADMIN_EMAIL."\n";
+	$mailheaders='From: '._ADMIN_SENDER_NAME.' <'._ADMIN_EMAIL.'>'."\n";
+	$mailheaders.='Reply-To: '._ADMIN_EMAIL."\n";
+	$mailheaders.='Return-Path: '._RETURNS_EMAIL."\n";
+	$mailheaders.='Precedence: bulk'."\n";
+	$mailheaders.='Auto-Submitted: auto-generated'."\n";
 
-$msg='Hello '.$username.'!'."\n\n";
+	$msg='Hello '.$username.'!'."\n\n";
 
-if ($warning==0) { $mailsubject=$newsletter_subject; }
-else if ($warning==1) {
+	$mailsubject=$newsletter_subject;
 
-$password=$data[$index]->password;
+	/*
+	if ($warning==0) { $mailsubject=$newsletter_subject; }
+	else if ($warning==1) {
 
-$mailsubject='Important Message about your Account';
-$msg.=_SEPARATOR.'
+		$password=$data[$index]->password;
+
+		$mailsubject='Important Message about your Account';
+		$msg.=_SEPARATOR.'
 
 You haven\'t logged in for almost a year. Your account
 might be deleted if you fail to do so. Please login
@@ -75,37 +85,35 @@ Password: '.$password.'
 
 Login at '._HOMEPAGE.'/
 
-'._SEPARATOR."\n\n"; }
+'._SEPARATOR."\n\n"; }*/
 
-$msg.=$newsletter_text;
+	$msg.=$newsletter_text;
 
-if ($all!=1) {
+	if ($all!=1) {
 
-$msg.="\n\n"._SEPARATOR.'
+		$msg.="\n\n"._SEPARATOR.'
 
 You receive this email because you signed up for our newsletter.
 
 The URL of the website is '._HOMEPAGE.'/
 
-To unsubscribe from this newsletter please unsubscribe at
+To unsubscribe from this newsletter please go to
 "Misc > Settings > Newsletter".';
 
+	}
+
+	$msg.="\n\n";
+	$msg.=_SEPARATOR."\n";
+	$msg.=_EMAIL_ADVERT_TEXT."\n";
+	$msg.=_SEPARATOR."\n";
+	$msg.=_SLOGAN."\n";
+	$msg.=_HOMEPAGE."\n";
+	$msg.='Email: '._ADMIN_EMAIL."\n";
+
+	mail($email, $mailsubject, $msg, $mailheaders);
+
+	$base_instance->query("UPDATE {$base_instance->entity['USER']['MAIN']} SET newsletter=$newsletter_id WHERE ID=$ID");
+
 }
-
-$msg.="\n\n";
-$msg.=_SEPARATOR."\n";
-$msg.=_EMAIL_ADVERT_TEXT."\n";
-$msg.=_SEPARATOR."\n";
-$msg.=_SLOGAN."\n";
-$msg.=_HOMEPAGE."\n";
-$msg.='Email: '._ADMIN_EMAIL."\n";
-
-mail($email, $mailsubject, $msg, $mailheaders);
-
-$base_instance->query("UPDATE {$base_instance->entity['USER']['MAIN']} SET newsletter=$newsletter_id WHERE ID=$ID");
-
-}
-
-echo 'finished';
 
 ?>
