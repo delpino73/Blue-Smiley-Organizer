@@ -3,6 +3,9 @@
 =      http://www.bookmark-manager.com     =
 ============================================
 
+------ v 5.54 --- 29. June 2015 ------
+-minor fixes (titles for https URLs now shown)
+
 ------ v 5.53 --- 7. January 2014 ------
 -minor fix (removed deprecated split function)
 

@@ -1,6 +1,6 @@
 <?php
 
-define('_VERSION','5.53');
+define('_VERSION','5.54');
 
 $this->todo_status_array=array('0'=>'0% complete','1'=>'10% complete','2'=>'20% complete','3'=>'30% complete','4'=>'40% complete','5'=>'50% complete','6'=>'60% complete','7'=>'70% complete','8'=>'80% complete','9'=>'90% complete','10'=>'100% complete');
 
