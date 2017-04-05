@@ -226,41 +226,29 @@ class base {
 
 	function insert_links($text) {
 
-		$text=preg_replace("/\[http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!',:]+) ([-:.a-zA-Z0-9 ]+)\]/e","'<a href=\"load-url.php?url_encoded='.base64_encode('\\1').'\" target=\"_blank\" rel=\"nofollow\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>'.substr('\\2', 0,60).'</u></a>'",$text); # with link text
+		$text=preg_replace_callback('/\[https:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,:]+) ([-:.a-zA-Z0-9 ]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[2],0,60).'</u></a>';},$text);
 
-		$text=preg_replace("/\[https:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!',:]+) ([-:.a-zA-Z0-9 ]+)\]/e","'<a href=\"load-url.php?url_encoded='.base64_encode('\\1').'\" target=\"_blank\" rel=\"nofollow\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>'.substr('\\2', 0,60).'</u></a>'",$text); # with link text
+		$text=preg_replace_callback('/\[http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,:]+) ([-:.a-zA-Z0-9 ]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[2],0,60).'</u></a>';},$text);
 
-		$text=preg_replace("/([\[]*)(http:\/\/[a-zA-Z0-9_\-.\/~?=#&+%!',:@]+[\/=a-zA-Z0-9]{1})([\]]*)/e","'<img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <a href=\"load-url.php?url_encoded='.base64_encode('\\2').'\" target=\"_blank\"><u>'.substr('\\2', 0,60).'</u></a>'",$text);
+		$text=preg_replace_callback('/(https|http):\/\/([a-zA-Z0-9_\-.\/~?=#&+%!]+)/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[0]).'" target="_blank"><u>'.substr($m[0],0,90).'</u></a>';},$text);
 
-		$text=preg_replace("/([\[]*)(https:\/\/[a-zA-Z0-9_\-.\/~?=#&+%!',:@]+[\/=a-zA-Z0-9]{1})([\]]*)/e","'<img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <a href=\"load-url.php?url_encoded='.base64_encode('\\2').'\" target=\"_blank\"><u>'.substr('\\2', 0,60).'</u></a>'",$text);
+		$text=preg_replace_callback('/\[t([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-to-do.php?to_do_id='.$m[1].'"><u>TO-DO '.$m[2].'</u></a>';},$text);
 
-		# internal links
+		$text=preg_replace_callback('/\[k([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-knowledge.php?knowledge_id='.$m[1].'"><u>KNOWLEDGE '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace("/\[k([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"edit-knowledge.php?knowledge_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>KNOWLEDGE '.('\\2').'</u></a>'",$text);
+		$text=preg_replace_callback('/\[d([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="add-diary.php?diary_id='.$m[1].'"><u>DIARY '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace("/\[d([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"add-diary.php?diary_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>DIARY '.('\\2').'</u></a>'",$text);
+		$text=preg_replace_callback('/\[c([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-contact.php?contact_id='.$m[1].'"><u>CONTACT '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace("/\[c([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"edit-contact.php?contact_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>CONTACT '.('\\2').'</u></a>'",$text);
+		$text=preg_replace_callback('/\[n([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-note.php?note_id='.$m[1].'"><u>NOTE '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace("/\[t([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"edit-to-do.php?to_do_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>TO-DO '.('\\2').'</u></a>'",$text);
+		$text=preg_replace_callback('/\[b([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-blog.php?blog_id='.$m[1].'"><u>BLOG '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace("/\[n([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"edit-note.php?note_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>NOTE '.('\\2').'</u></a>'",$text);
-
-		$text=preg_replace("/\[b([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"edit-blog.php?blog_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>BLOG '.('\\2').'</u></a>'",$text);
-
-		$text=preg_replace("/\[f([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"show-file.php?file_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>FILE '.('\\2').'</u></a>'",$text);
-
-		$text=preg_replace("/\[i([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"show-file.php?file_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>IMAGE '.('\\2').'</u></a>'",$text);
-
-		$text=preg_replace("/\[l([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!', ]*)\]/e","'<a href=\"show-live-chat-complete.php?chat_id='.('\\1').'\"><img src=\"pics/link.gif\" border=\"0\" alt=\"\"> <u>LIVE CHAT '.('\\2').'</u></a>'",$text);
-
-		$text=preg_replace("/\[image-([a-zA-Z0-9]+)\]/e","'<img src=\"get-image.php?id='.('\\1').'\" alt=\"\">'",$text);
-
-		$text=preg_replace("/\[newsletterbox-([0-9]+)\]/e","'<table cellspacing=0 cellpadding=10 class=\"pastel\" bgcolor=\"#ffffff\" style=\"border:1px solid #dcdcdc\"><tr><td><strong>Newsletter Subscription:</strong><p><form action=\"add-blog-subscriber.php\" method=\"post\"><input type=\"hidden\" name=\"category_id\" value=\"'.('\\1').'\"><strong>Email:</strong> <input type=\"text\" name=\"email\" size=\"30\"><br><br><input name=\"subscribe\" type=\"radio\" value=\"1\" checked><strong>Subscribe</strong><br><input name=\"subscribe\" type=\"radio\" value=\"2\"><strong>Unsubscribe</strong> &nbsp;&nbsp; <input type=\"submit\" value=\"Send\"></form><br><strong><font size=\"1\">We have a strict No Spam Policy</font></strong></td></tr></table>'",$text);
+		$text=preg_replace_callback('/\[f([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="show-file.php?file_id='.$m[1].'"><u>FILE '.$m[2].'</u></a>';},$text);
 
 		return $text;
 
-	}
+}
 
 	function get_ip() {
 
