@@ -226,25 +226,25 @@ class base {
 
 	function insert_links($text) {
 
-		$text=preg_replace_callback('/\[https:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,:]+) ([-:.a-zA-Z0-9 ]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[2],0,60).'</u></a>';},$text);
+		$text=preg_replace_callback('/\[https:\/\/([a-zA-Z0-9_\-.:\/~?=#&+%!,:]+) ([-:.a-zA-Z0-9 ]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[2],0,60).'</u></a>';},$text);
 
-		$text=preg_replace_callback('/\[http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,:]+) ([-:.a-zA-Z0-9 ]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[2],0,60).'</u></a>';},$text);
+		$text=preg_replace_callback('/\[http:\/\/([a-zA-Z0-9_\-.:\/~?=#&+%!,:]+) ([-:.a-zA-Z0-9 ]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[2],0,60).'</u></a>';},$text);
 
-		$text=preg_replace_callback('/(https|http):\/\/([a-zA-Z0-9_\-.\/~?=#&+%!]+)/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[0]).'" target="_blank"><u>'.substr($m[0],0,90).'</u></a>';},$text);
+		$text=preg_replace_callback('/(https|http):\/\/([a-zA-Z0-9_\-.:\/~?=#&+%!]+)/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[0]).'" target="_blank"><u>'.substr($m[0],0,90).'</u></a>';},$text);
 
-		$text=preg_replace_callback('/\[t([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-to-do.php?to_do_id='.$m[1].'"><u>TO-DO '.$m[2].'</u></a>';},$text);
+		$text=preg_replace_callback('/\[t([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-to-do.php?to_do_id='.$m[1].'"><u>TO-DO '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace_callback('/\[k([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-knowledge.php?knowledge_id='.$m[1].'"><u>KNOWLEDGE '.$m[2].'</u></a>';},$text);
+		$text=preg_replace_callback('/\[k([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-knowledge.php?knowledge_id='.$m[1].'"><u>KNOWLEDGE '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace_callback('/\[d([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="add-diary.php?diary_id='.$m[1].'"><u>DIARY '.$m[2].'</u></a>';},$text);
+		$text=preg_replace_callback('/\[d([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="add-diary.php?diary_id='.$m[1].'"><u>DIARY '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace_callback('/\[c([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-contact.php?contact_id='.$m[1].'"><u>CONTACT '.$m[2].'</u></a>';},$text);
+		$text=preg_replace_callback('/\[c([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-contact.php?contact_id='.$m[1].'"><u>CONTACT '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace_callback('/\[n([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-note.php?note_id='.$m[1].'"><u>NOTE '.$m[2].'</u></a>';},$text);
+		$text=preg_replace_callback('/\[n([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-note.php?note_id='.$m[1].'"><u>NOTE '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace_callback('/\[b([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-blog.php?blog_id='.$m[1].'"><u>BLOG '.$m[2].'</u></a>';},$text);
+		$text=preg_replace_callback('/\[b([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="edit-blog.php?blog_id='.$m[1].'"><u>BLOG '.$m[2].'</u></a>';},$text);
 
-		$text=preg_replace_callback('/\[f([0-9]+)([a-zA-Z0-9_\-.\/?=#&+%!, ]*)\]/',function($m) { return '<a href="show-file.php?file_id='.$m[1].'"><u>FILE '.$m[2].'</u></a>';},$text);
+		$text=preg_replace_callback('/\[f([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="show-file.php?file_id='.$m[1].'"><u>FILE '.$m[2].'</u></a>';},$text);
 
 		return $text;
 
