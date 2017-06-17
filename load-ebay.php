@@ -61,33 +61,11 @@ echo '<meta http-equiv="refresh" content="0; URL=',$url,'">';
 
 }
 
-else if ($search_text && $country=='de') {
+else if ($search_text && ($country=='de' or $country=='ch' or $country=='at')) {
 
-$url=urlencode('http://search.ebay.de/ws/search/SaleSearch?satitle='.$search_text);
+	$url='https://www.ebay.de/sch/i.html?_nkw='.$search_text;
 
-$url='http://partners.webmasterplan.com/click.asp?ref=136628&site=1382&type=text&tnb=23&diurl='.$url;
-
-echo '<meta http-equiv="refresh" content="0; URL=',$url,'">';
-
-}
-
-else if ($search_text && $country=='ch') {
-
-$url=urlencode('http://search.ebay.ch/ws/search/SaleSearch?satitle='.$search_text);
-
-$url='http://partners.webmasterplan.com/click.asp?ref=136628&site=1384&type=text&tnb=1&diurl='.$url;
-
-echo '<meta http-equiv="refresh" content="0; URL=',$url,'">';
-
-}
-
-else if ($search_text && $country=='at') {
-
-$url=urlencode('http://search.ebay.at/ws/search/SaleSearch?satitle='.$search_text);
-
-$url='http://partners.webmasterplan.com/click.asp?ref=136628&site=1383&type=text&tnb=1&diurl='.$url;
-
-echo '<meta http-equiv="refresh" content="0; URL=',$url,'">';
+	echo '<meta http-equiv="refresh" content="0; URL=',$url,'">';
 
 }
 
