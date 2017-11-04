@@ -501,9 +501,8 @@ function get_items() {
 
 	if (!empty($this->para['ORDER_COL'])) {
 
-	#eregi("([a-z0-9_]+)",$this->para['ORDER_COL'],$ll);
-	#$order_col=$ll[1];
-	$order_col=$this->para['ORDER_COL'];
+		if (!preg_match("/^[A-Za-z_,]+$/",$this->para['ORDER_COL'])) { echo 'Order Col Error'; exit; }
+		$order_col=$this->para['ORDER_COL'];
 
 	} else { $order_col='datetime'; }
 
