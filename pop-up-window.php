@@ -36,10 +36,12 @@ for ($index=1; $index <= sizeof($data); $index++) {
 	if ($popup==1) { $popup='Yes'; } else { $popup='No'; }
 
 	$day_of_the_week_temp=$data[$index]->day_of_the_week;
+
+	//$day_of_the_week=split('~',$day_of_the_week_temp);
 	$day_of_the_week=explode('~',$day_of_the_week_temp);
 
 	while (list($key,$val)=each($day_of_the_week)) {
-	$all_days.=$base_instance->day_of_the_week_array[$val].' / ';
+		$all_days.=$base_instance->day_of_the_week_array[$val].' / ';
 	}
 
 	$all_days=substr($all_days,0,-2);
@@ -50,6 +52,8 @@ for ($index=1; $index <= sizeof($data); $index++) {
 
 	if ($notes) { $notes_link='<a href="javascript:void(window.open(\'edit-reminder-weekday.php?reminder_id='.$ID.'\',\'\',\'width=600,height=500,top=100,left=100\'))">[Notes]</a>'; }
 	else { $notes_link='&nbsp;'; }
+
+	$title=$base_instance->insert_links($title);
 
 	$text_weekday.='<tr><td><div id="item'.$ID.'">'.$title.'</div></td><td>'.$what_time.'</td><td>'.$all_days.'</td><td>'.$popup.'</td><td>'.$homepage.'</td><td>'.$notes_link.'</td><td><a href="javascript:void(window.open(\'edit-reminder-weekday.php?reminder_id='.$ID.'\',\'\',\'width=600,height=500,top=100,left=100\'))">[Edit]</a></td><td><a href="javascript:DelReminderWeekday(\''.$ID.'\')">[Delete]</a></td></tr>';
 
@@ -80,6 +84,8 @@ for ($index=1; $index <= sizeof($data2); $index++) {
 	$notes=$data2[$index]->text;
 	$homepage=$data2[$index]->homepage;
 	$popup=$data2[$index]->popup;
+
+	$title=$base_instance->insert_links($title);
 
 	if ($homepage==1) { $homepage='Yes'; } else { $homepage='No'; }
 	if ($popup==1) { $popup='Yes'; } else { $popup='No'; }
@@ -125,6 +131,8 @@ for ($index=1; $index <= sizeof($data3); $index++) {
 	if ($notes) { $notes_link='<a href="javascript:void(window.open(\'edit-reminder-days.php?reminder_id='.$ID.'\',\'\',\'width=600,height=500,top=100,left=100\'))">[Notes]</a>'; }
 	else { $notes_link='&nbsp;'; }
 
+	$title=$base_instance->insert_links($title);
+
 	$text_days.='<tr><td><div id="item'.$ID.'">'.$title.'</div></td><td>'.$what_time.'</td><td>'.$frequency.'</td><td>'.$popup.'</td><td>'.$homepage.'</td><td>'.$notes_link.'</td><td><a href="javascript:void(window.open(\'edit-reminder-days.php?reminder_id='.$ID.'\',\'\',\'width=600,height=500,top=100,left=100\'))">[Edit]</a></td><td><a href="javascript:DelReminderDays(\''.$ID.'\')">[Delete]</a></td></tr>';
 
 	$base_instance->query("UPDATE {$base_instance->entity['REMINDER']['DAYS']} SET last_reminded='$today' WHERE ID=$ID");
@@ -165,6 +173,8 @@ for ($index=1; $index <= sizeof($data4); $index++) {
 
 	if ($notes) { $notes_link='<a href="javascript:void(window.open(\'edit-reminder-hours.php?reminder_id='.$ID.'\',\'\',\'width=600,height=500,top=100,left=100\'))">[Notes]</a>'; }
 	else { $notes_link='&nbsp;'; }
+
+	$title=$base_instance->insert_links($title);
 
 	$text_hours.='<tr><td><div id="item'.$ID.'">'.$title.'</div></td><td>'.$number_of_hours.' hours '.$number_of_mins.' mins</td><td>'.$notes_link.'</td><td><a href="javascript:void(window.open(\'edit-reminder-hours.php?reminder_id='.$ID.'\',\'\',\'width=600,height=300,top=100,left=100\'))">[Edit]</a></td><td><a href="javascript:DelReminderHours(\''.$ID.'\')">[Delete]</a></td></tr>';
 
@@ -237,10 +247,10 @@ for ($index=1; $index <= sizeof($data6); $index++) {
 
 	if ($answer_id > 0) {
 
-	$data7=$base_instance->get_data("SELECT * FROM {$base_instance->entity['INSTANT_MESSAGE']['MAIN']} WHERE ID=$answer_id");
-	$text2=$data7[1]->text;
+		$data7=$base_instance->get_data("SELECT * FROM {$base_instance->entity['INSTANT_MESSAGE']['MAIN']} WHERE ID=$answer_id");
+		$text2=$data7[1]->text;
 
-	$answer_to='<strong>From:</strong> You<p>'.$text2.'<p>';
+		$answer_to='<strong>From:</strong> You<p>'.$text2.'<p>';
 
 	} else { $answer_to=''; }
 
@@ -262,9 +272,9 @@ for ($index=1; $index <= sizeof($data6); $index++) {
 <input type="Hidden" name="receiver" value="'.$user.'">
 <input type="Hidden" name="answer_id" value="'.$ID.'">';
 
-if (empty($_GET['manual'])) { $text_im.='<input type="Hidden" name="close" value="1">'; }
+	if (empty($_GET['manual'])) { $text_im.='<input type="Hidden" name="close" value="1">'; }
 
-$text_im.='<textarea rows=3 cols=60 name=text wrap></textarea><br>
+	$text_im.='<textarea rows=3 cols=60 name=text wrap></textarea><br>
 <input type="SUBMIT" value="Reply Instant Message" name="save">
 </form></div></td></tr>';
 
@@ -280,14 +290,14 @@ $all_text='<br><table border=0 cellspacing=0 cellpadding=15 bgcolor="#ffffff" cl
 
 if ($data or $data2 or $data3 or $data4 or $data5 or $data6) {
 
-if (isset($_GET['manual'])) { $all_text.='To automatically open new messages by pop-up window please deactivate pop-up blockers.<p>'; }
+	if (isset($_GET['manual'])) { $all_text.='To automatically open new messages by pop-up window please deactivate pop-up blockers.<p>'; }
 
-if ($data) { $all_text.=$text_weekday; }
-if ($data2) { $all_text.=$text_date; }
-if ($data3) { $all_text.=$text_days; }
-if ($data4) { $all_text.=$text_hours; }
-if ($data5) { $all_text.=$text_chat; }
-if ($data6) { $all_text.=$text_im; }
+	if ($data) { $all_text.=$text_weekday; }
+	if ($data2) { $all_text.=$text_date; }
+	if ($data3) { $all_text.=$text_days; }
+	if ($data4) { $all_text.=$text_hours; }
+	if ($data5) { $all_text.=$text_chat; }
+	if ($data6) { $all_text.=$text_im; }
 
 } else { $all_text.='No new messages, Pop-up Window has been successfully opened.'; }
 
@@ -306,10 +316,10 @@ function seen_it() { seen=1; }
 $js.='</script>';
 
 $html_instance->add_parameter(
-array(
-'HEAD'=>$js,
-'TEXT_CENTER'=>$all_text
-));
+	array(
+		'HEAD'=>$js,
+		'TEXT_CENTER'=>$all_text
+	));
 
 $html_instance->process();
 
