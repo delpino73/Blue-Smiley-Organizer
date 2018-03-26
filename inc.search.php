@@ -42,7 +42,7 @@ $search[20]='<td width="115"><form name="search" class="inline" method="get" act
 
 $search[21]='<td width="115"><form name="search" class="inline" method="get" action="https://de.wikipedia.org/w/wiki.phtml" target="_blank"><a href="https://de.wikipedia.org/" target="_blank"><font size="1">Wikipedia (de)</font></a><br><input type=text name="search" size="5" onFocus="this.select()"><input type="submit" value="Go"></td></form>';
 
-$search[22]='<td width="120"><form action="search-all.php" method="post" target="main"><font size="1">Organizer</font><br><input type="text" name="text_search" size="10" onFocus="this.select()"> <input type="submit" value="Go"></td></form>';
+$search[22]='<td width="150"><form action="search-all.php" method="post" target="main"><font size="1">Organizer</font><br><input type="text" name="text_search" size="10" onFocus="this.select()"><input type="submit" value="Go"></td></form>';
 
 $search[23]='<td width="115"><form method="get" action="https://www.google.com/custom" target="google_window"><font size="1">Google.com</font><br><input type="text" name="q" size="5" maxlength="255" value=""></input><input type="submit" name="sa" value="Go"></input>
 <input type="hidden" name="client" value="'._GOOGLE_ADSENSE_ID.'"></input><input type="hidden" name="forid" value="1"></input><input type="hidden" name="channel" value="'._GOOGLE_ADSENSE_CHANNEL.'"></input><input type="hidden" name="ie" value="ISO-8859-1"></input><input type="hidden" name="oe" value="ISO-8859-1"></input><input type="hidden" name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1"></input><input type="hidden" name="hl" value="en"></input></td></form>';
