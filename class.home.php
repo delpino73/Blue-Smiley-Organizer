@@ -401,26 +401,28 @@ function flashcards() {
 
 	if (!empty($data2)) {
 
-	$knowledge_title=$data2[1]->title;
+		$knowledge_title=$data2[1]->title;
 
-	$encoded=urlencode($knowledge_title);
+		$encoded=urlencode($knowledge_title);
 
-	$knowledge_text=$data2[1]->text;
-	$knowledge_category_id=$data2[1]->category;
+		$knowledge_text=$data2[1]->text;
+		$knowledge_category_id=$data2[1]->category;
 
-	$data=$base_instance->get_data("SELECT title FROM {$base_instance->entity['KNOWLEDGE']['CATEGORY']} WHERE ID=$knowledge_category_id");
-	$knowledge_category_text=$data[1]->title;
+		$data=$base_instance->get_data("SELECT title FROM {$base_instance->entity['KNOWLEDGE']['CATEGORY']} WHERE ID=$knowledge_category_id");
+		$knowledge_category_text=$data[1]->title;
 
-	$knowledge_text=convert_square_bracket($knowledge_text);
+		$knowledge_text=convert_square_bracket($knowledge_text);
 
-	$knowledge_text=nl2br($knowledge_text);
+		$knowledge_text=nl2br($knowledge_text);
 
-	$knowledge_title=convert_square_bracket($knowledge_title);
-	$knowledge_title='<strong>'.$knowledge_title.':</strong> ';
+		$knowledge_title=convert_square_bracket($knowledge_title);
 
-	$google_image='<a href="http://images.google.com/images?client=pub-1841153363764743&amp;channel=0220874538&amp;safe=active&amp;q='.$encoded.'&amp;ie=UTF-8&amp;oe=UTF-8&amp;um=1&amp;sa=N&amp;tab=wi" target="_blank">[Google Images]</a>';
+		if (!empty($knowledge_title)) { $knowledge_title='<strong>'.$knowledge_title.':</strong> '; }
+		else { $knowledge_title=''; }
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'"><font size="2">'.$knowledge_category_text.'</font> &nbsp; <font size="1">Shown: '.$knowledge_shown.' - <a href="edit-knowledge.php?knowledge_id='.$knowledge_id.'">[E]</a> &nbsp; <a href="javascript:DelKnow(\''.$knowledge_id.'\')">[D]</a> &nbsp; <a href="show-knowledge-flashcards.php">[Flashcards]</a> &nbsp; '.$google_image.'</font></td></tr><tr><td width="100%" style="padding:10"><div id="item'.$knowledge_id.'">'.$knowledge_title.$knowledge_text.'
+		$google_image='<a href="http://images.google.com/images?client=pub-1841153363764743&amp;channel=0220874538&amp;safe=active&amp;q='.$encoded.'&amp;ie=UTF-8&amp;oe=UTF-8&amp;um=1&amp;sa=N&amp;tab=wi" target="_blank">[Google Images]</a>';
+
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'"><font size="2">'.$knowledge_category_text.'</font> &nbsp; <font size="1">Shown: '.$knowledge_shown.' - <a href="edit-knowledge.php?knowledge_id='.$knowledge_id.'">[E]</a> &nbsp; <a href="javascript:DelKnow(\''.$knowledge_id.'\')">[D]</a> &nbsp; <a href="show-knowledge-flashcards.php">[Flashcards]</a> &nbsp; '.$google_image.'</font></td></tr><tr><td width="100%" style="padding:10"><div id="item'.$knowledge_id.'">'.$knowledge_title.$knowledge_text.'
 
 <p><div align="center"><table border="0" cellpadding="5" cellspacing="0" bgcolor="#f0f8ff" class="pastel2">
 <tr><td align="center"><strong>Remove from Loop for:</strong><p></td></tr>
