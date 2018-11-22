@@ -226,6 +226,10 @@ class base {
 
 	function insert_links($text) {
 
+		$text=preg_replace_callback('/\[(http:\/\/[a-zA-Z0-9_\-.:\/~?=#&+%!,:]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[1],0,60).'</u></a>';},$text);
+
+		$text=preg_replace_callback('/\[(https:\/\/[a-zA-Z0-9_\-.:\/~?=#&+%!,:]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[1],0,60).'</u></a>';},$text);
+
 		$text=preg_replace_callback('/\[https:\/\/([a-zA-Z0-9_\-.:\/~?=#&+%!,:]+) ([-:.a-zA-Z0-9 ]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[2],0,60).'</u></a>';},$text);
 
 		$text=preg_replace_callback('/\[http:\/\/([a-zA-Z0-9_\-.:\/~?=#&+%!,:]+) ([-:.a-zA-Z0-9 ]+)\]/',function($m) { return '<a href="load-url.php?url_encoded='.base64_encode($m[1]).'" target="_blank"><u>'.substr($m[2],0,60).'</u></a>';},$text);
@@ -246,9 +250,11 @@ class base {
 
 		$text=preg_replace_callback('/\[f([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="show-file.php?file_id='.$m[1].'"><u>FILE '.$m[2].'</u></a>';},$text);
 
+		$text=preg_replace_callback('/\[image-([a-zA-Z0-9]+)\]/',function($m) { return '<img src="get-image.php?id='.$m[1].'" alt="">';},$text);
+
 		return $text;
 
-}
+	}
 
 	function get_ip() {
 
