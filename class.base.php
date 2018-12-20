@@ -252,6 +252,8 @@ class base {
 
 		$text=preg_replace_callback('/\[image-([a-zA-Z0-9]+)\]/',function($m) { return '<img src="get-image.php?id='.$m[1].'" alt="">';},$text);
 
+		$text=preg_replace_callback('/\[i([0-9]+)([a-zA-Z0-9_\-.:\/?=#&+%!, ]*)\]/',function($m) { return '<a href="show-file.php?file_id='.$m[1].'"><img src="pics/link.gif" border="0" alt=""> <u>IMAGE '.$m[2].'</u></a>';},$text);
+
 		return $text;
 
 	}
