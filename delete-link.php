@@ -25,6 +25,19 @@ if (!$data) { $base_instance->show_message('Link not found'); exit; }
 $datetime=$data[1]->datetime;
 $url=$data[1]->url;
 $title=$data[1]->title;
+$category=$data[1]->category;
+
+//
+
+$data2=$base_instance->get_data("SELECT title FROM {$base_instance->entity['LINK']['CATEGORY']} WHERE user='$userid' AND ID='$category'");
+
+if (!empty($data2)) {
+
+	$title_category=$data2[1]->title;
+
+} else { $title_category='(not found)'; }
+
+//
 
 if (preg_match('/:\/\//',$url)) {} else { $url='http://'.$url; }
 
@@ -43,7 +56,7 @@ array('ACTION'=>'show_form',
 $html_instance->add_form_field(array('TYPE'=>'hidden','NAME'=>'link_id','VALUE'=>"$link_id"));
 
 $html_instance->add_form_field(array('TYPE'=>'label','TEXT'=>"
-<div align=\"center\"><table><tr><td><strong>Added:</strong></td><td>$datetime_converted</td></tr><tr><td><strong>URL:</strong></td><td>$url</td></tr><tr><td><strong>Title:</strong></td><td>$title</td></tr></table></div>"));
+<div align=\"center\"><table><tr><td><strong>Added:</strong></td><td>$datetime_converted</td></tr><tr><td><strong>URL:</strong></td><td>$url</td></tr><tr><td><strong>Title:</strong></td><td>$title</td></tr><tr><td><strong>Category:</strong></td><td>$title_category</td></tr></table></div>"));
 
 $html_instance->process();
 
