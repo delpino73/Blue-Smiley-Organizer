@@ -123,11 +123,13 @@ function last_visited_links($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td width="250" onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td width="250" onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'	</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -158,11 +160,14 @@ function links_by_popularity($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
+
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
 		if ($link_title) { $link_url=$link_title; }
 		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -195,11 +200,13 @@ function random_bluebox_links($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';" width="250"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';" width="250"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -230,11 +237,13 @@ function random_links($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';" width="250"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';" width="250"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -267,8 +276,7 @@ function random_public_link($links) {
 
 	$username=$base_instance->get_username($link_user);
 
-	if ($link_title) { $link_url_short=$link_title; }
-	else { $link_url_short='http://'.substr($link_url,0,30); }
+	if ($link_title) { $link_url_short=$link_title; } else { $link_url_short='http://'.substr($link_url,0,30); }
 
 	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Public Link</b> - from <a href="show-user.php?username='.$username.'">'.$username.'</a></td></tr>';
 
@@ -832,11 +840,13 @@ function bluebox_by_popularity($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -877,8 +887,7 @@ function newest_in_bluebox($links) {
 
 		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
 		# calculate time in Bluebox
 
@@ -944,9 +953,11 @@ function longest_in_bluebox($links) {
 		$link_frequency=$data[$index]->frequency;
 		$link_title=$data[$index]->title;
 		$link_last_visit=$data[$index]->last_visit;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
+
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
 		# calculate time in Bluebox
 
@@ -974,7 +985,7 @@ function longest_in_bluebox($links) {
 
 	#
 
-		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td align="center" width=50><font size="1">'.$time_in_BB.'</font></td><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td align="center" width=50><font size="1">'.$time_in_BB.'</font></td><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -1005,11 +1016,13 @@ function last_added_links($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -1042,11 +1055,13 @@ function links_by_sequence($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+
+		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -1079,11 +1094,13 @@ function bluebox_by_speed_ranking($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td width="250" onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+
+		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td width="250" onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -1377,11 +1394,13 @@ function bluebox_by_sequence($links) {
 		$link_id=$data[$index]->ID;
 		$link_url=$data[$index]->url;
 		$link_title=$data[$index]->title;
+		$link_subtitle=$data[$index]->subtitle;
 
-		if ($link_title) { $link_url=$link_title; }
-		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_title) { $link_url=$link_title; } else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+
+		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
