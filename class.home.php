@@ -27,8 +27,8 @@ function get_element($element_id) {
 
 	if ($element_id==1) {
 
-	$number_of_elements=count($base_instance->home_array);
-	$element_id=mt_rand(2,$number_of_elements);
+		$number_of_elements=count($base_instance->home_array);
+		$element_id=mt_rand(2,$number_of_elements);
 
 	}
 
@@ -110,9 +110,9 @@ function last_visited_links($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (Last visited)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (Last visited)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -120,14 +120,14 @@ function last_visited_links($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td width="250" onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td width="250" onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -145,9 +145,9 @@ function links_by_popularity($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (by Popularity)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (by Popularity)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -155,14 +155,14 @@ function links_by_popularity($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -182,9 +182,9 @@ function random_bluebox_links($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Bluebox</b> (Randomly)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Bluebox</b> (Randomly)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -192,14 +192,14 @@ function random_bluebox_links($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';" width="250"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';" width="250"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -217,9 +217,9 @@ function random_links($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (Randomly)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (Randomly)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -227,14 +227,14 @@ function random_links($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';" width="250"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';" width="250"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -254,9 +254,9 @@ function random_public_link($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Public Link</b></td></tr><tr><td width="100%" style="padding:10">No public links saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Public Link</b></td></tr><tr><td width="100%" style="padding:10">No public links saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -290,9 +290,9 @@ function random_diary() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Diary</b></td></tr><tr><td width="100%" style="padding:10">No diary saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Diary</b></td></tr><tr><td width="100%" style="padding:10">No diary saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -331,9 +331,9 @@ function random_knowledge() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Knowledge</b></td></tr><tr><td width="100%" style="padding:10">No knowledge saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Knowledge</b></td></tr><tr><td width="100%" style="padding:10">No knowledge saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -354,8 +354,8 @@ function random_knowledge() {
 
 	if (!empty($knowledge_title)) {
 
-	$knowledge_title=convert_square_bracket($knowledge_title);
-	$knowledge_title='<strong>'.$knowledge_title.':</strong> ';
+		$knowledge_title=convert_square_bracket($knowledge_title);
+		$knowledge_title='<strong>'.$knowledge_title.':</strong> ';
 
 	}
 
@@ -377,14 +377,14 @@ function flashcards() {
 
 	if (!$data) {
 
-	$data3=$base_instance->get_data("SELECT COUNT(*) AS cnt FROM {$base_instance->entity['KNOWLEDGE']['MAIN']} WHERE user=$this->user");
+		$data3=$base_instance->get_data("SELECT COUNT(*) AS cnt FROM {$base_instance->entity['KNOWLEDGE']['MAIN']} WHERE user=$this->user");
 
-	if (empty($data3[1]->cnt)) { $msg='No knowledge added yet.'; }
-	else { $msg='No words in the queue or loop or loop has not been created yet. Click <a href="show-knowledge-flashcards.php" target="_blank">here to initialize</a>'; }
+		if (empty($data3[1]->cnt)) { $msg='No knowledge added yet.'; }
+		else { $msg='No words in the queue or loop or loop has not been created yet. Click <a href="show-knowledge-flashcards.php" target="_blank">here to initialize</a>'; }
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Knowledge (Loop)</b></td></tr><tr><td width="100%" style="padding:10">'.$msg.'</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Knowledge (Loop)</b></td></tr><tr><td width="100%" style="padding:10">'.$msg.'</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -463,15 +463,15 @@ function calculate_date($reminder_id, $year, $month, $day, $warning, $title, $no
 
 	for ($index=0; $index <= $warning; $index++) {
 
-	$y=date('Y',mktime(0,0,0,date('m'),date('d')+$index,date('Y')));
-	$m=date('m',mktime(0,0,0,date('m'),date('d')+$index,date('Y')));
-	$d=date('d',mktime(0,0,0,date('m'),date('d')+$index,date('Y')));
+		$y=date('Y',mktime(0,0,0,date('m'),date('d')+$index,date('Y')));
+		$m=date('m',mktime(0,0,0,date('m'),date('d')+$index,date('Y')));
+		$d=date('d',mktime(0,0,0,date('m'),date('d')+$index,date('Y')));
 
-	if (($y==$year or $year==0) && ($m==$month or $month==0) && ($d==$day or $day==0)) {
+		if (($y==$year or $year==0) && ($m==$month or $month==0) && ($d==$day or $day==0)) {
 
-	if ($index==0) { $bold=1; } else { $not_bold=1; }
+			if ($index==0) { $bold=1; } else { $not_bold=1; }
 
-	}
+		}
 
 	}
 
@@ -658,16 +658,16 @@ AND user=$this->user AND homepage=1 ORDER BY day ASC LIMIT 100";
 
 	for ($index=1; $index <= $reminder_total; $index++) {
 
-	$reminder_id[$index]=$data[$index]->ID;
-	$reminder_title[$index]=$data[$index]->title;
-	$reminder_text[$index]=$data[$index]->text;
-	$reminder_day[$index]=$data[$index]->day;
-	$reminder_month[$index]=$data[$index]->month;
-	$reminder_year[$index]=$data[$index]->year;
+		$reminder_id[$index]=$data[$index]->ID;
+		$reminder_title[$index]=$data[$index]->title;
+		$reminder_text[$index]=$data[$index]->text;
+		$reminder_day[$index]=$data[$index]->day;
+		$reminder_month[$index]=$data[$index]->month;
+		$reminder_year[$index]=$data[$index]->year;
 
-	$reminder_time[$index]=$data[$index]->what_time;
+		$reminder_time[$index]=$data[$index]->what_time;
 
-	$reminder_warning[$index]=$data[$index]->warning_homepage;
+		$reminder_warning[$index]=$data[$index]->warning_homepage;
 
 	}
 
@@ -681,10 +681,10 @@ AND user=$this->user AND homepage=1 ORDER BY day ASC LIMIT 100";
 
 	for ($index=1; $index <= $dotw_total; $index++) {
 
-	$dotw_id[$index]=$data2[$index]->ID;
-	$dotw_title[$index]=$data2[$index]->title;
-	$dotw_text[$index]=$data2[$index]->text;
-	$dotw_time[$index]=$data2[$index]->what_time;
+		$dotw_id[$index]=$data2[$index]->ID;
+		$dotw_title[$index]=$data2[$index]->title;
+		$dotw_text[$index]=$data2[$index]->text;
+		$dotw_time[$index]=$data2[$index]->what_time;
 
 	}
 
@@ -700,16 +700,16 @@ AND user=$this->user AND homepage=1 ORDER BY day ASC LIMIT 100";
 
 	for ($index=1; $index <= $reg_total; $index++) {
 
-	$reg_id[$index]=$data3[$index]->ID;
-	$reg_title[$index]=$data3[$index]->title;
-	$reg_text[$index]=$data3[$index]->text;
-	$reg_last_reminded[$index]=$data3[$index]->last_reminded;
-	$reg_frequency[$index]=$data3[$index]->frequency;
+		$reg_id[$index]=$data3[$index]->ID;
+		$reg_title[$index]=$data3[$index]->title;
+		$reg_text[$index]=$data3[$index]->text;
+		$reg_last_reminded[$index]=$data3[$index]->last_reminded;
+		$reg_frequency[$index]=$data3[$index]->frequency;
 
-	preg_match("/([0-9]+)-([0-9]+)-([0-9]+)/",$reg_last_reminded[$index],$dd);
+		preg_match("/([0-9]+)-([0-9]+)-([0-9]+)/",$reg_last_reminded[$index],$dd);
 
-	$temp=mktime(0,0,0,$dd[2],$dd[3]+$reg_frequency[$index],$dd[1]);
-	$days_rounded[$index]=round(($timestamp-$temp)/86400);
+		$temp=mktime(0,0,0,$dd[2],$dd[3]+$reg_frequency[$index],$dd[1]);
+		$days_rounded[$index]=round(($timestamp-$temp)/86400);
 
 	}
 
@@ -727,33 +727,33 @@ AND user=$this->user AND homepage=1 ORDER BY day ASC LIMIT 100";
 
 	if (empty($no_data)) {
 
-	for ($index=1; $index <= $reminder_total; $index++) {
+		for ($index=1; $index <= $reminder_total; $index++) {
 
-	if ($reminder_text[$index]) { $notes=1; } else { $notes=''; }
+			if ($reminder_text[$index]) { $notes=1; } else { $notes=''; }
 
-	$text=$this->calculate_date($reminder_id[$index], $reminder_year[$index], $reminder_month[$index], $reminder_day[$index], $reminder_warning[$index], $reminder_title[$index], $notes, $reminder_time[$index]);
+			$text=$this->calculate_date($reminder_id[$index], $reminder_year[$index], $reminder_month[$index], $reminder_day[$index], $reminder_warning[$index], $reminder_title[$index], $notes, $reminder_time[$index]);
 
-	if ($text) { $all_date.=$text; }
+			if ($text) { $all_date.=$text; }
 
-	}
+		}
 
-	for ($index=1; $index <= $dotw_total; $index++) {
+		for ($index=1; $index <= $dotw_total; $index++) {
 
-	if ($dotw_text[$index]) { $notes_link='<a href="javascript:void(window.open(\'show-notes-text.php?weekday_reminder_id='.$dotw_id[$index].'\',\'\',\'width=600,height=500,top=100,left=100\'))">N</a>'; }
-	else { $notes_link='&nbsp;'; }
+			if ($dotw_text[$index]) { $notes_link='<a href="javascript:void(window.open(\'show-notes-text.php?weekday_reminder_id='.$dotw_id[$index].'\',\'\',\'width=600,height=500,top=100,left=100\'))">N</a>'; }
+			else { $notes_link='&nbsp;'; }
 
-	$all_date.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td align=left colspan=2>'.$dotw_time[$index].' - '.$dotw_title[$index].'</td><td width=10>'.$notes_link.'</td><td width=10><a href="javascript:void(window.open(\'edit-reminder-weekday.php?reminder_id='.$dotw_id[$index].'\',\'\',\'width=600,height=500,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-reminder-weekday.php?reminder_id='.$dotw_id[$index].'\',\'\',\'width=450,height=200,top=100,left=100\'))">D</a></td></tr>';
+			$all_date.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td align=left colspan=2>'.$dotw_time[$index].' - '.$dotw_title[$index].'</td><td width=10>'.$notes_link.'</td><td width=10><a href="javascript:void(window.open(\'edit-reminder-weekday.php?reminder_id='.$dotw_id[$index].'\',\'\',\'width=600,height=500,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-reminder-weekday.php?reminder_id='.$dotw_id[$index].'\',\'\',\'width=450,height=200,top=100,left=100\'))">D</a></td></tr>';
 
-	}
+		}
 
-	for ($index=1; $index <= $reg_total; $index++) {
+		for ($index=1; $index <= $reg_total; $index++) {
 
-	if ($reg_text[$index]) { $notes_link='<a href="javascript:void(window.open(\'show-notes-text.php?days_reminder_id='.$reg_id[$index].'\',\'\',\'width=600,height=500,top=100,left=100\'))">N</a>'; }
-	else { $notes_link='&nbsp;'; }
+			if ($reg_text[$index]) { $notes_link='<a href="javascript:void(window.open(\'show-notes-text.php?days_reminder_id='.$reg_id[$index].'\',\'\',\'width=600,height=500,top=100,left=100\'))">N</a>'; }
+			else { $notes_link='&nbsp;'; }
 
-	$all_date.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td width=10>'.$days_rounded[$index].'</td><td onClick="window.open(\'count-reminder.php?reload=1&amp;reminder_id='.$reg_id[$index].'\',\'status\')"><span class="fakelink">'.$reg_title[$index].'</span></td><td width=10>'.$notes_link.'</td><td width=10><a href="javascript:void(window.open(\'edit-reminder-days.php?reminder_id='.$reg_id[$index].'\',\'\',\'width=600,height=500,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-reminder-days.php?reminder_id='.$reg_id[$index].'\',\'\',\'width=450,height=200,top=100,left=100\'))">D</a></td></tr>';
+			$all_date.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td width=10>'.$days_rounded[$index].'</td><td onClick="window.open(\'count-reminder.php?reload=1&amp;reminder_id='.$reg_id[$index].'\',\'status\')"><span class="fakelink">'.$reg_title[$index].'</span></td><td width=10>'.$notes_link.'</td><td width=10><a href="javascript:void(window.open(\'edit-reminder-days.php?reminder_id='.$reg_id[$index].'\',\'\',\'width=600,height=500,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-reminder-days.php?reminder_id='.$reg_id[$index].'\',\'\',\'width=450,height=200,top=100,left=100\'))">D</a></td></tr>';
 
-	}
+		}
 
 	}
 
@@ -773,9 +773,9 @@ function random_to_do() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random To-Do</b></td></tr><tr><td width="100%" style="padding:10">No to-do saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random To-Do</b></td></tr><tr><td width="100%" style="padding:10">No to-do saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -817,9 +817,9 @@ function bluebox_by_popularity($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Bluebox</b> (by Popularity)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Bluebox</b> (by Popularity)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -829,14 +829,14 @@ function bluebox_by_popularity($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -856,9 +856,9 @@ function newest_in_bluebox($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Newest in Bluebox</b></td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Newest in Bluebox</b></td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -868,42 +868,45 @@ function newest_in_bluebox($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_frequency=$data[$index]->frequency;
-	$link_title=$data[$index]->title;
-	$link_last_visit=$data[$index]->last_visit;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_frequency=$data[$index]->frequency;
+		$link_title=$data[$index]->title;
+		$link_last_visit=$data[$index]->last_visit;
+		$link_subtitle=$data[$index]->subtitle;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if (!empty($link_subtitle)) { $ls='<br><font size="1">'.$link_subtitle.'</font>'; } else { $ls=''; }
 
-	# calculate time in Bluebox
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	$last_active_converted=strtotime($link_last_visit);
+		# calculate time in Bluebox
 
-	if ($link_frequency==0) { $time_in_BB='-'; }
+		$last_active_converted=strtotime($link_last_visit);
 
-	else {
+		if ($link_frequency==0) { $time_in_BB='-'; }
 
-	$seconds_since_last_active=$now-$last_active_converted;
-	$seconds_in_BB=$seconds_since_last_active-$link_frequency;
+		else {
 
-	if ($seconds_in_BB < 0) { $minus=1; $seconds_in_BB=abs($seconds_in_BB); }
+			$seconds_since_last_active=$now-$last_active_converted;
+			$seconds_in_BB=$seconds_since_last_active-$link_frequency;
 
-	if ($seconds_in_BB < 60) { $time_in_BB=$seconds_in_BB.' secs'; }
-	else if ($seconds_in_BB < 3600) { $time_in_BB=round($seconds_in_BB/60).' mins'; }
-	else if ($seconds_in_BB < 86400) { $time_in_BB=round($seconds_in_BB/3600).' hours'; }
-	else { $time_in_BB=round($seconds_in_BB/86400).' days'; }
+			if ($seconds_in_BB < 0) { $minus=1; $seconds_in_BB=abs($seconds_in_BB); }
 
-	if (isset($minus)) { $time_in_BB='-'.$time_in_BB; }
+			if ($seconds_in_BB < 60) { $time_in_BB=$seconds_in_BB.' secs'; }
+			else if ($seconds_in_BB < 3600) { $time_in_BB=round($seconds_in_BB/60).' mins'; }
+			else if ($seconds_in_BB < 86400) { $time_in_BB=round($seconds_in_BB/3600).' hours'; }
+			else { $time_in_BB=round($seconds_in_BB/86400).' days'; }
 
-	unset($minus);
+			if (isset($minus)) { $time_in_BB='-'.$time_in_BB; }
 
-	}
+			unset($minus);
 
-#
+		}
 
-	if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td align="center" width=50><font size="1">'.$time_in_BB.'</font></td><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?bluebox=1&link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+	#
+
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td align="center" width=50><font size="1">'.$time_in_BB.'</font></td><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span>'.$ls.'</td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?bluebox=1&link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -923,9 +926,9 @@ function longest_in_bluebox($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Longest in Bluebox</b></td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Longest in Bluebox</b></td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -935,43 +938,43 @@ function longest_in_bluebox($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_visits=$data[$index]->visits;
-	$link_frequency=$data[$index]->frequency;
-	$link_title=$data[$index]->title;
-	$link_last_visit=$data[$index]->last_visit;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_visits=$data[$index]->visits;
+		$link_frequency=$data[$index]->frequency;
+		$link_title=$data[$index]->title;
+		$link_last_visit=$data[$index]->last_visit;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	# calculate time in Bluebox
+		# calculate time in Bluebox
 
-	$last_active_converted=strtotime($link_last_visit);
+		$last_active_converted=strtotime($link_last_visit);
 
-	if ($link_frequency==0) { $time_in_BB='-'; }
+		if ($link_frequency==0) { $time_in_BB='-'; }
 
-	else {
+		else {
 
-	$seconds_since_last_active=$now-$last_active_converted;
-	$seconds_in_BB=$seconds_since_last_active-$link_frequency;
+			$seconds_since_last_active=$now-$last_active_converted;
+			$seconds_in_BB=$seconds_since_last_active-$link_frequency;
 
-	if ($seconds_in_BB < 0) { $minus=1; $seconds_in_BB=abs($seconds_in_BB); }
+			if ($seconds_in_BB < 0) { $minus=1; $seconds_in_BB=abs($seconds_in_BB); }
 
-	if ($seconds_in_BB < 60) { $time_in_BB=$seconds_in_BB.' secs'; }
-	else if ($seconds_in_BB < 3600) { $time_in_BB=round($seconds_in_BB/60).' mins'; }
-	else if ($seconds_in_BB < 86400) { $time_in_BB=round($seconds_in_BB/3600).' hours'; }
-	else { $time_in_BB=round($seconds_in_BB/86400).' days'; }
+			if ($seconds_in_BB < 60) { $time_in_BB=$seconds_in_BB.' secs'; }
+			else if ($seconds_in_BB < 3600) { $time_in_BB=round($seconds_in_BB/60).' mins'; }
+			else if ($seconds_in_BB < 86400) { $time_in_BB=round($seconds_in_BB/3600).' hours'; }
+			else { $time_in_BB=round($seconds_in_BB/86400).' days'; }
 
-	if (isset($minus)) { $time_in_BB='-'.$time_in_BB; }
+			if (isset($minus)) { $time_in_BB='-'.$time_in_BB; }
 
-	unset($minus);
+			unset($minus);
 
-	}
+		}
 
-#
+	#
 
-	if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td align="center" width=50><font size="1">'.$time_in_BB.'</font></td><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td align="center" width=50><font size="1">'.$time_in_BB.'</font></td><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -989,9 +992,9 @@ function last_added_links($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (Last added)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (Last added)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -999,14 +1002,14 @@ function last_added_links($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -1026,9 +1029,9 @@ function links_by_sequence($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (by Sequence)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Links</b> (by Sequence)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1036,14 +1039,14 @@ function links_by_sequence($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -1063,9 +1066,9 @@ function bluebox_by_speed_ranking($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Bluebox</b> (by Speed Ranking)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Bluebox</b> (by Speed Ranking)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1073,14 +1076,14 @@ function bluebox_by_speed_ranking($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td width="250" onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td width="250" onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -1103,9 +1106,9 @@ function to_do_by_priority($to_do) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>To-Do List (by Priority)</b></b></td></tr><tr><td width="100%" style="padding:10">No to-do saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>To-Do List (by Priority)</b></b></td></tr><tr><td width="100%" style="padding:10">No to-do saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1113,14 +1116,14 @@ function to_do_by_priority($to_do) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$to_do_id=$data[$index]->ID;
-	$to_do_priority=$data[$index]->priority;
-	$to_do_title=$data[$index]->title;
-	$to_do_text=$data[$index]->text;
+		$to_do_id=$data[$index]->ID;
+		$to_do_priority=$data[$index]->priority;
+		$to_do_title=$data[$index]->title;
+		$to_do_text=$data[$index]->text;
 
-	if (!$to_do_title) { $title=substr($to_do_text,0,45); } else { $title=$to_do_title; }
+		if (!$to_do_title) { $title=substr($to_do_text,0,45); } else { $title=$to_do_title; }
 
-	if ($to_do_id) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td align=right width=30>'.$to_do_priority.'</td><td><span class="fakelink">'.$title.'</span></td><td width=10><a href="javascript:void(window.open(\'edit-to-do.php?to_do_id='.$to_do_id.'\',\'\',\'width=700,height=450,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:DelToDo(\''.$to_do_id.'\')">D</a></td></tr>'; }
+		if ($to_do_id) { $all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td align=right width=30>'.$to_do_priority.'</td><td><span class="fakelink">'.$title.'</span></td><td width=10><a href="javascript:void(window.open(\'edit-to-do.php?to_do_id='.$to_do_id.'\',\'\',\'width=700,height=450,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:DelToDo(\''.$to_do_id.'\')">D</a></td></tr>'; }
 
 	}
 
@@ -1180,9 +1183,9 @@ function rss_feed($feed_id) {
 
 	if ($data) {
 
-	$feed_url=$data[1]->feed;
-	$title=$data[1]->title;
-	$max_items=$data[1]->max_items;
+		$feed_url=$data[1]->feed;
+		$title=$data[1]->title;
+		$max_items=$data[1]->max_items;
 
 	}
 
@@ -1216,10 +1219,10 @@ function sticky_note($note_id) {
 
 	if ($data) {
 
-	$text=$data[1]->text;
-	$text=convert_square_bracket($text);
-	$text=$base_instance->insert_links($text);
-	$text=nl2br($text);
+		$text=$data[1]->text;
+		$text=convert_square_bracket($text);
+		$text=$base_instance->insert_links($text);
+		$text=nl2br($text);
 
 	} else { $text='Empty'; }
 
@@ -1239,42 +1242,42 @@ function search() {
 
 	if ($data) {
 
-	$search_forms='<table cellpadding=5>';
+		$search_forms='<table cellpadding=5>';
 
-	$element1=$data[1]->element1;
-	$element2=$data[1]->element2;
-	$element3=$data[1]->element3;
-	$element4=$data[1]->element4;
-	$element5=$data[1]->element5;
-	$element6=$data[1]->element6;
-	$element7=$data[1]->element7;
-	$element8=$data[1]->element8;
-	$element9=$data[1]->element9;
-	$element10=$data[1]->element10;
+		$element1=$data[1]->element1;
+		$element2=$data[1]->element2;
+		$element3=$data[1]->element3;
+		$element4=$data[1]->element4;
+		$element5=$data[1]->element5;
+		$element6=$data[1]->element6;
+		$element7=$data[1]->element7;
+		$element8=$data[1]->element8;
+		$element9=$data[1]->element9;
+		$element10=$data[1]->element10;
 
-	$search_forms.='<tr><td>';
+		$search_forms.='<tr><td>';
 
-	if ($element1) { $search_forms.=$search[$element1]; }
-	if ($element2) { $search_forms.=$search[$element2]; }
-	if ($element3) { $search_forms.=$search[$element3]; }
+		if ($element1) { $search_forms.=$search[$element1]; }
+		if ($element2) { $search_forms.=$search[$element2]; }
+		if ($element3) { $search_forms.=$search[$element3]; }
 
-	$search_forms.='</td></tr><tr><td>';
+		$search_forms.='</td></tr><tr><td>';
 
-	if ($element4) { $search_forms.=$search[$element4]; }
-	if ($element5) { $search_forms.=$search[$element5]; }
-	if ($element6) { $search_forms.=$search[$element6]; }
+		if ($element4) { $search_forms.=$search[$element4]; }
+		if ($element5) { $search_forms.=$search[$element5]; }
+		if ($element6) { $search_forms.=$search[$element6]; }
 
-	$search_forms.='</td></tr><tr><td>';
+		$search_forms.='</td></tr><tr><td>';
 
-	if ($element7) { $search_forms.=$search[$element7]; }
-	if ($element8) { $search_forms.=$search[$element8]; }
-	if ($element9) { $search_forms.=$search[$element9]; }
+		if ($element7) { $search_forms.=$search[$element7]; }
+		if ($element8) { $search_forms.=$search[$element8]; }
+		if ($element9) { $search_forms.=$search[$element9]; }
 
-	$search_forms.='</td></tr><tr><td>';
+		$search_forms.='</td></tr><tr><td>';
 
-	if ($element10) { $search_forms.=$search[$element10]; }
+		if ($element10) { $search_forms.=$search[$element10]; }
 
-	$search_forms.='</td></tr></table>';
+		$search_forms.='</td></tr></table>';
 
 	} else { $search_forms='<table cellpadding=5><tr><td><a href="edit-search.php">Click here to set up your search</a></td></tr></table>'; }
 
@@ -1292,9 +1295,9 @@ function random_rss_feed() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random RSS Feed</b></td></tr><tr><td width="100%" style="padding:10">No RSS Feeds saved <a href="add-rss-feeds.php">[Add RSS Feeds]</a></td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random RSS Feed</b></td></tr><tr><td width="100%" style="padding:10">No RSS Feeds saved <a href="add-rss-feeds.php">[Add RSS Feeds]</a></td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1325,9 +1328,9 @@ function random_notes() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Note</b></td></tr><tr><td width="100%" style="padding:10">No notes saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Random Note</b></td></tr><tr><td width="100%" style="padding:10">No notes saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1361,9 +1364,9 @@ function bluebox_by_sequence($links) {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Bluebox</b> (by Sequence)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Bluebox</b> (by Sequence)</td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1371,14 +1374,14 @@ function bluebox_by_sequence($links) {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$link_id=$data[$index]->ID;
-	$link_url=$data[$index]->url;
-	$link_title=$data[$index]->title;
+		$link_id=$data[$index]->ID;
+		$link_url=$data[$index]->url;
+		$link_title=$data[$index]->title;
 
-	if ($link_title) { $link_url=$link_title; }
-	else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
+		if ($link_title) { $link_url=$link_title; }
+		else if ($link_id) { $link_url='http://'.substr($link_url,0,30); }
 
-	if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
+		if ($link_url) { $all_text.='<tr onMouseOver="this.style.backgroundColor=\'#e9e9e9\';" onMouseOut="this.style.backgroundColor=\'#ffffff\';"><td onClick="window.open(\'visit-link.php?link_id='.$link_id.'\',\'_blank\'); this.style.fontWeight=\'bold\';"><span class="fakelink">'.$link_url.'</span></td><td width=10><a href="visit-link.php?link_id='.$link_id.'" target="_blank">V</a></td><td width=10><a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">E</a></td><td width=10><a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">D</a></td></tr>'; }
 
 	}
 
@@ -1398,9 +1401,9 @@ function link_category() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Link Categories</b></td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Link Categories</b></td></tr><tr><td width="100%" style="padding:10">No links saved <a href="import-bookmarks-start.php">[Upload Bookmarks]</a></td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1408,18 +1411,18 @@ function link_category() {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$category_id=$data[$index]->ID;
-	$category_title=$data[$index]->title;
+		$category_id=$data[$index]->ID;
+		$category_title=$data[$index]->title;
 
-	#
+		#
 
-	$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['LINK']['MAIN']} WHERE user={$this->user} AND category=$category_id");
+		$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['LINK']['MAIN']} WHERE user={$this->user} AND category=$category_id");
 
-	$number_links=$data2[1]->total;
+		$number_links=$data2[1]->total;
 
-	#
+		#
 
-	$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-links.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_links.'</td></tr>';
+		$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-links.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_links.'</td></tr>';
 
 	}
 
@@ -1439,9 +1442,9 @@ function knowledge_category() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Knowledge Categories</b></td></tr><tr><td width="100%" style="padding:10">No knowledge saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Knowledge Categories</b></td></tr><tr><td width="100%" style="padding:10">No knowledge saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1449,18 +1452,18 @@ function knowledge_category() {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$category_id=$data[$index]->ID;
-	$category_title=$data[$index]->title;
+		$category_id=$data[$index]->ID;
+		$category_title=$data[$index]->title;
 
-	#
+		#
 
-	$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['KNOWLEDGE']['MAIN']} WHERE user={$this->user} AND category=$category_id");
+		$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['KNOWLEDGE']['MAIN']} WHERE user={$this->user} AND category=$category_id");
 
-	$number_knowledge=$data2[1]->total;
+		$number_knowledge=$data2[1]->total;
 
-	#
+		#
 
-	$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-knowledge.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_knowledge.'</td></tr>';
+		$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-knowledge.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_knowledge.'</td></tr>';
 
 	}
 
@@ -1480,9 +1483,9 @@ function to_do_category() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>To-Do Categories</b></td></tr><tr><td width="100%" style="padding:10">No to-do saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>To-Do Categories</b></td></tr><tr><td width="100%" style="padding:10">No to-do saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1490,18 +1493,18 @@ function to_do_category() {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$category_id=$data[$index]->ID;
-	$category_title=$data[$index]->title;
+		$category_id=$data[$index]->ID;
+		$category_title=$data[$index]->title;
 
-	#
+		#
 
-	$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['TO_DO']['MAIN']} WHERE user={$this->user} AND category=$category_id");
+		$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['TO_DO']['MAIN']} WHERE user={$this->user} AND category=$category_id");
 
-	$number_to_do=$data2[1]->total;
+		$number_to_do=$data2[1]->total;
 
-	#
+		#
 
-	$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-to-do.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_to_do.'</td></tr>';
+		$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-to-do.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_to_do.'</td></tr>';
 
 	}
 
@@ -1521,9 +1524,9 @@ function contact_category() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Contact Categories</b></td></tr><tr><td width="100%" style="padding:10">No contacts saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Contact Categories</b></td></tr><tr><td width="100%" style="padding:10">No contacts saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1531,18 +1534,18 @@ function contact_category() {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$category_id=$data[$index]->ID;
-	$category_title=$data[$index]->title;
+		$category_id=$data[$index]->ID;
+		$category_title=$data[$index]->title;
 
-	#
+		#
 
-	$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['CONTACT']['MAIN']} WHERE user={$this->user} AND category=$category_id");
+		$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['CONTACT']['MAIN']} WHERE user={$this->user} AND category=$category_id");
 
-	$number_contact=$data2[1]->total;
+		$number_contact=$data2[1]->total;
 
-	#
+		#
 
-	$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-contact.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_contact.'</td></tr>';
+		$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-contact.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_contact.'</td></tr>';
 
 	}
 
@@ -1562,9 +1565,9 @@ function notes_category() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Notes Categories</b></td></tr><tr><td width="100%" style="padding:10">No notes saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Notes Categories</b></td></tr><tr><td width="100%" style="padding:10">No notes saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1572,18 +1575,18 @@ function notes_category() {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$category_id=$data[$index]->ID;
-	$category_title=$data[$index]->title;
+		$category_id=$data[$index]->ID;
+		$category_title=$data[$index]->title;
 
-	#
+		#
 
-	$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['NOTE']['MAIN']} WHERE user={$this->user} AND category=$category_id");
+		$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['NOTE']['MAIN']} WHERE user={$this->user} AND category=$category_id");
 
-	$number_note=$data2[1]->total;
+		$number_note=$data2[1]->total;
 
-	#
+		#
 
-	$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-note.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_note.'</td></tr>';
+		$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-note.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_note.'</td></tr>';
 
 	}
 
@@ -1603,9 +1606,9 @@ function files_category() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Files Categories</b></td></tr><tr><td width="100%" style="padding:10">No files saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Files Categories</b></td></tr><tr><td width="100%" style="padding:10">No files saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1613,18 +1616,18 @@ function files_category() {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$category_id=$data[$index]->ID;
-	$category_title=$data[$index]->title;
+		$category_id=$data[$index]->ID;
+		$category_title=$data[$index]->title;
 
-	#
+		#
 
-	$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['FILE']['MAIN']} WHERE user={$this->user} AND category=$category_id");
+		$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['FILE']['MAIN']} WHERE user={$this->user} AND category=$category_id");
 
-	$number_files=$data2[1]->total;
+		$number_files=$data2[1]->total;
 
-	#
+		#
 
-	$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-files.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_files.'</td></tr>';
+		$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-files.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_files.'</td></tr>';
 
 	}
 
@@ -1644,9 +1647,9 @@ function database_category() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Database Categories</b></td></tr><tr><td width="100%" style="padding:10">No database saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Database Categories</b></td></tr><tr><td width="100%" style="padding:10">No database saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1654,18 +1657,18 @@ function database_category() {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$category_id=$data[$index]->ID;
-	$category_title=$data[$index]->title;
+		$category_id=$data[$index]->ID;
+		$category_title=$data[$index]->title;
 
-	#
+		#
 
-	$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['DATABASE']['MAIN']} WHERE user={$this->user} AND category_id=$category_id");
+		$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['DATABASE']['MAIN']} WHERE user={$this->user} AND category_id=$category_id");
 
-	$number_database=$data2[1]->total;
+		$number_database=$data2[1]->total;
 
-	#
+		#
 
-	$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-database-data.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_database.'</td></tr>';
+		$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-database-data.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_database.'</td></tr>';
 
 	}
 
@@ -1685,9 +1688,9 @@ function blog_category() {
 
 	if (!$data) {
 
-	$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Blog Categories</b></td></tr><tr><td width="100%" style="padding:10">No blog saved</td></tr></table>';
+		$all_text='<table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" class="pastel2"><tr><td width="100%" style="background-image: url(\'pics/gradient.jpg\');border-bottom:1px solid '._BLOCK_LINE_COLOR.'">&nbsp;<b>Blog Categories</b></td></tr><tr><td width="100%" style="padding:10">No blog saved</td></tr></table>';
 
-	return $all_text;
+		return $all_text;
 
 	}
 
@@ -1695,18 +1698,18 @@ function blog_category() {
 
 	for ($index=1; $index <= sizeof($data); $index++) {
 
-	$category_id=$data[$index]->ID;
-	$category_title=$data[$index]->title;
+		$category_id=$data[$index]->ID;
+		$category_title=$data[$index]->title;
 
-	#
+		#
 
-	$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['BLOG']['MAIN']} WHERE user={$this->user} AND category=$category_id");
+		$data2=$base_instance->get_data("SELECT COUNT(*) AS total FROM {$base_instance->entity['BLOG']['MAIN']} WHERE user={$this->user} AND category=$category_id");
 
-	$number_blog=$data2[1]->total;
+		$number_blog=$data2[1]->total;
 
-	#
+		#
 
-	$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-blog.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_blog.'</td></tr>';
+		$all_text.='<tr onMouseOver=\'this.style.background="#e9e9e9"\' onMouseOut=\'this.style.background="#ffffff"\'><td><a href="show-blog.php?category_id='.$category_id.'"><strong>'.$category_title.'</strong></a></td><td align="left"><strong>Total:</strong> '.$number_blog.'</td></tr>';
 
 	}
 
