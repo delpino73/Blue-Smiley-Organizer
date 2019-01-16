@@ -41,7 +41,7 @@ $date=date('r',$timestamp);
 
 $text=substr($text,0,200);
 
-$text=preg_replace("/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\[\/url\]/e","'<a href=\"http://'.'\\1'.'\" target=\"_blank\">'.'\\2'.'</a>'",$text);
+$text=preg_replace_callback('/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\[\/url\]/',function($m) { return '<a href=\"http://'.$m[1].'\" target=\"_blank\">'.$m[2].'</a>';},$text);
 
 if (_SHORT_URLS==1) { $link=_HOMEPAGE.'/permalink-'.$ID; }
 else { $link=_HOMEPAGE.'/show-blog-public-permalink.php?blog_id='.$ID; }

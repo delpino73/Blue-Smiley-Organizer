@@ -140,17 +140,17 @@ if ($blog_len > 3000) {
 
 	$text=substr($text,0,$end_at);
 
-	$text=preg_replace("/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\[\/url\]/e","'<a href=\"http://'.'\\1'.'\" target=\"_blank\">'.'\\2'.'</a>'",$text);
+	$text=preg_replace_callback('/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\[\/url\]/',function($m) { return '<a href=\"http://'.$m[1].'\" target=\"_blank\">'.$m[2].'</a>';},$text);
 
-	$text=preg_replace("/\[image-([a-zA-Z0-9]+)\]/e","'<img src=\"get-image.php?id='.('\\1').'\" alt=\"\">'",$text);
+	$text=preg_replace_callback('/\[image-([a-zA-Z0-9]+)\]/',function($m) { return '<img src="get-image.php?id='.$m[1].'" alt="">';},$text);
 
 	if ($end_at < $blog_len) { $text.=' <a href="'.$url.'">.. [click to continue]</a>'; }
 
 } else {
 
-$text=preg_replace("/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\[\/url\]/e","'<a href=\"http://'.'\\1'.'\" target=\"_blank\">'.'\\2'.'</a>'",$text);
+	$text=preg_replace_callback('/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\[\/url\]/',function($m) { return '<a href=\"http://'.$m[1].'\" target=\"_blank\">'.$m[2].'</a>';},$text);
 
-$text=preg_replace("/\[image-([a-zA-Z0-9]+)\]/e","'<img src=\"get-image.php?id='.('\\1').'\" alt=\"\">'",$text);
+	$text=preg_replace_callback('/\[image-([a-zA-Z0-9]+)\]/',function($m) { return '<img src="get-image.php?id='.$m[1].'" alt="">';},$text);
 
 }
 

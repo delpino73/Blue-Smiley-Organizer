@@ -122,9 +122,9 @@ $text=convert_square_bracket($text);
 
 $text=nl2br($text);
 
-$text=preg_replace("/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\[\/url\]/e","'<a href=\"http://'.'\\1'.'\" target=\"_blank\">'.'\\2'.'</a>'",$text);
+$text=preg_replace_callback('/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\[\/url\]/',function($m) { return '<a href=\"http://'.$m[1].'\" target=\"_blank\">'.$m[2].'</a>';},$text);
 
-$text=preg_replace("/\[image-([a-zA-Z0-9]+)\]/e","'<img src=\"get-image.php?id='.('\\1').'\" alt=\"\">'",$text);
+$text=preg_replace_callback('/\[image-([a-zA-Z0-9]+)\]/',function($m) { return '<img src="get-image.php?id='.$m[1].'" alt="">';},$text);
 
 if ($text_search) { $text=preg_replace("/($text_search)/i","<b>\\1</b>",$text); }
 

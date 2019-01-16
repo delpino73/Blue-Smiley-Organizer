@@ -25,6 +25,7 @@ $userid=$data[1]->user;
 $title=$data[1]->title;
 
 $data=$base_instance->get_data("SELECT username FROM {$base_instance->entity['USER']['MAIN']} WHERE ID='$userid'");
+
 $username=$data[1]->username;
 
 #
@@ -77,9 +78,9 @@ $text=convert_square_bracket($text);
 
 $text=nl2br($text);
 
-$text=preg_replace("/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!',: ]+)\[\/url\]/e","'<a href=\"http://'.'\\1'.'\" target=\"_blank\">'.'\\2'.'</a>'",$text);
+$text=preg_replace_callback('/\[url=http:\/\/([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\]([a-zA-Z0-9_\-.\/~?=#&+%!,: ]+)\[\/url\]/',function($m) { return '<a href=\"http://'.$m[1].'\" target=\"_blank\">'.$m[2].'</a>';},$text);
 
-$text=preg_replace("/\[image-([a-zA-Z0-9]+)\]/e","'<img src=\"get-image.php?id='.('\\1').'\" alt=\"\">'",$text);
+$text=preg_replace_callback('/\[image-([a-zA-Z0-9]+)\]/',function($m) { return '<img src="get-image.php?id='.$m[1].'" alt="">';},$text);
 
 $main.='<p><h1>'.$title.'</h1><font size=1>'.$datetime_converted.'</font><p><!-- google_ad_section_start -->'.$text.'<!-- google_ad_section_end -->';
 
