@@ -133,37 +133,37 @@ if (isset($_POST['save'])) {
 
 else {
 
-$data=$base_instance->get_data("SELECT * FROM {$base_instance->entity['LINK']['MAIN']} WHERE user='$userid' AND ID=$link_id");
+	$data=$base_instance->get_data("SELECT * FROM {$base_instance->entity['LINK']['MAIN']} WHERE user='$userid' AND ID=$link_id");
 
-if (!$data) { $base_instance->show_message('Link not found'); exit; }
+	if (!$data) { $base_instance->show_message('Link not found'); exit; }
 
-$datetime=$data[1]->datetime;
-$subtitle=$data[1]->subtitle;
-$url=$data[1]->url;
-$category_id=$data[1]->category;
-#$public=$data[1]->public;
-$title=$data[1]->title;
-$frequency=$data[1]->frequency;
-$mode=$data[1]->frequency_mode;
-$notes=$data[1]->notes;
-$keywords=$data[1]->keywords;
-$speed=$data[1]->speed;
-$sequence=$data[1]->sequence;
+	$datetime=$data[1]->datetime;
+	$subtitle=$data[1]->subtitle;
+	$url=$data[1]->url;
+	$category_id=$data[1]->category;
+	#$public=$data[1]->public;
+	$title=$data[1]->title;
+	$frequency=$data[1]->frequency;
+	$mode=$data[1]->frequency_mode;
+	$notes=$data[1]->notes;
+	$keywords=$data[1]->keywords;
+	$speed=$data[1]->speed;
+	$sequence=$data[1]->sequence;
 
-$datetime_converted=$base_instance->convert_date($datetime);
+	$datetime_converted=$base_instance->convert_date($datetime);
 
-$number_of_days=floor($frequency / 86400);
-$days_in_second=$number_of_days * 86400;
+	$number_of_days=floor($frequency / 86400);
+	$days_in_second=$number_of_days * 86400;
 
-$frequency=$frequency-$days_in_second;
+	$frequency=$frequency-$days_in_second;
 
-$number_of_hours=floor($frequency / 3600);
-$hours_in_second=$number_of_hours * 3600;
+	$number_of_hours=floor($frequency / 3600);
+	$hours_in_second=$number_of_hours * 3600;
 
-$frequency=$frequency-$hours_in_second;
+	$frequency=$frequency-$hours_in_second;
 
-$number_of_mins=floor($frequency / 60);
-$mins_in_second=$number_of_mins * 60;
+	$number_of_mins=floor($frequency / 60);
+	$mins_in_second=$number_of_mins * 60;
 
 }
 
