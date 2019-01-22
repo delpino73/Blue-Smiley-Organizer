@@ -24,15 +24,27 @@ $url=base64_decode($_GET['e2']);
 
 	if ($url && $url!='http://') {
 
-	$url_save=$url;
+		$url2=$url;
 
-	if (preg_match("/^http:\/\//i",$url_save)) { $url_save=substr($url_save,7); }
+		if (preg_match('/\/$/',$url2)) { $url2=substr($url2,0,-1); }
 
-	if (preg_match('/\/$/',$url_save)) { $url_test=substr($url_save,0,-1); } else { $url_test=$url_save; }
 
-	$data=$base_instance->get_data('SELECT ID FROM '.$base_instance->entity['LINK']['MAIN'].' WHERE (url="'.sql_safe($url_test).'" OR url="'.sql_safe($url_test).'/") AND user='.$userid);
+		if (preg_match("/^http:\/\//i",$url2)) { $url3=substr($url2,7); } else { $url3=$url2; }
+		if (preg_match("/^https:\/\//i",$url2)) { $url4=substr($url2,8); } else { $url4=$url2; }
 
-	if ($data) { $link_id=$data[1]->ID; $text='<font color="#FF0000">You\'ve already saved this link</font> <a href="edit-link.php?link_id='.$link_id.'">[Edit Link]</a><p>'; }
+		#
+
+		$data=$base_instance->get_data('SELECT ID FROM '.$base_instance->entity['LINK']['MAIN'].' WHERE (url="'.sql_safe($url3).'" OR url="'.sql_safe($url3).'/") AND user='.$userid);
+
+		if (!empty($data)) { $link_id=$data[1]->ID; $text='<font color="#FF0000">You\'ve already saved this link</font> <a href="edit-link.php?link_id='.$link_id.'">[Edit Link]</a><p>'; }
+
+		//
+
+		$data2=$base_instance->get_data('SELECT ID FROM '.$base_instance->entity['LINK']['MAIN'].' WHERE (url="'.sql_safe($url4).'" OR url="'.sql_safe($url4).'/") AND user='.$userid);
+
+		if (!empty($data2)) { $link_id=$data2[1]->ID; $text='<font color="#FF0000">You\'ve already saved this link as non-secure (without https)</font> <a href="edit-link.php?link_id='.$link_id.'">[Edit Link]</a><p>'; }
+
+		//
 
 	}
 
@@ -63,13 +75,13 @@ if (isset($_POST['save'])) {
 
 	if ($new_category) {
 
-	$duplicate=$base_instance->get_data('SELECT * FROM '.$base_instance->entity['LINK']['CATEGORY'].' WHERE title="'.sql_safe($new_category).'" AND user='.$userid);
+		$duplicate=$base_instance->get_data('SELECT * FROM '.$base_instance->entity['LINK']['CATEGORY'].' WHERE title="'.sql_safe($new_category).'" AND user='.$userid);
 
-	if ($duplicate) { $error.='<li> Category with this name already exists'; }
+		if ($duplicate) { $error.='<li> Category with this name already exists'; }
 
-	$new_category=str_replace('"','&quot;',$new_category);
+		$new_category=str_replace('"','&quot;',$new_category);
 
-	if (strlen($new_category)>50) { $error.='<li> Category title is too long (Max. 50 Characters)'; }
+		if (strlen($new_category)>50) { $error.='<li> Category title is too long (Max. 50 Characters)'; }
 
 	}
 
@@ -78,9 +90,9 @@ if (isset($_POST['save'])) {
 	if (!$title) { $error.='<li> Title cannot be left blank'; }
 	else {
 
-	$title=trim($title);
-	if (strlen($title)>70) { $error.='<li> Title is too long (Max. 70 Characters)'; }
-	$title=str_replace('"','&quot;',$title);
+		$title=trim($title);
+		if (strlen($title)>70) { $error.='<li> Title is too long (Max. 70 Characters)'; }
+		$title=str_replace('"','&quot;',$title);
 
 	}
 
@@ -88,8 +100,8 @@ if (isset($_POST['save'])) {
 
 	if ($notes) {
 
-	$notes=trim($notes);
-	if (strlen($notes)>65535) { $error.='<li> Notes are too long (Max. 65535 Characters)'; }
+		$notes=trim($notes);
+		if (strlen($notes)>65535) { $error.='<li> Notes are too long (Max. 65535 Characters)'; }
 
 	}
 
@@ -97,8 +109,8 @@ if (isset($_POST['save'])) {
 
 	if (!$subtitle) {
 
-	$subtitle=trim($subtitle);
-	if (strlen($subtitle)>75) { $error.='<li> Subtitle is too long (Max. 75 Characters)'; }
+		$subtitle=trim($subtitle);
+		if (strlen($subtitle)>75) { $error.='<li> Subtitle is too long (Max. 75 Characters)'; }
 
 	}
 
@@ -107,24 +119,18 @@ if (isset($_POST['save'])) {
 	if (!$url or $url=='http://') { $error.='<li> URL cannot be left blank'; }
 	else {
 
-	$url=trim($url);
-	if (strlen($url)>400) { $error.='<li> URL is too long (Max. 400 Characters)'; }
+		$url=trim($url);
+		if (strlen($url)>400) { $error.='<li> URL is too long (Max. 400 Characters)'; }
 
 	}
 
 	# URL duplicate check
 
-	if ($url && $url!='http://') {
+	if ($url) {
 
-	$url_save=$url;
+		$url_save=$url;
 
-	if (preg_match("/^http:\/\//i",$url_save)) { $url_save=substr($url_save,7); }
-
-	if (preg_match('/\/$/',$url_save)) { $url_test=substr($url_save,0,-1); } else { $url_test=$url_save; }
-
-	$data=$base_instance->get_data('SELECT ID FROM '.$base_instance->entity['LINK']['MAIN'].' WHERE (url="'.sql_safe($url_test).'" OR url="'.sql_safe($url_test).'/") AND user='.$userid);
-
-	if ($data) { $link_id=$data[1]->ID; $base_instance->show_message('Link already saved','<a href="edit-link.php?link_id='.$link_id.'">[Edit Link]</a>'); }
+		if (preg_match("/^http:\/\//i",$url_save)) { $url_save=substr($url_save,7); }
 
 	}
 
@@ -136,30 +142,30 @@ if (isset($_POST['save'])) {
 
 	if (!$error) {
 
-	if ($new_category) {
+		if ($new_category) {
 
-	$base_instance->query('INSERT INTO '.$base_instance->entity['LINK']['CATEGORY'].' (title,user,parent_id) VALUES ("'.sql_safe($new_category).'",'.$userid.','.$category_id.')');
+			$base_instance->query('INSERT INTO '.$base_instance->entity['LINK']['CATEGORY'].' (title,user,parent_id) VALUES ("'.sql_safe($new_category).'",'.$userid.','.$category_id.')');
 
-	$category_id=mysqli_insert_id($base_instance->db_link);
+			$category_id=mysqli_insert_id($base_instance->db_link);
 
-	}
+		}
 
-	$datetime=$_POST['datetime'];
+		$datetime=$_POST['datetime'];
 
-	$base_instance->query('INSERT INTO '.$base_instance->entity['LINK']['MAIN'].' (datetime,subtitle,url,user,category,public,title,frequency,frequency_mode,last_visit,notes,keywords,speed,sequence) VALUES ("'.sql_safe($datetime).'","'.sql_safe($subtitle).'","'.sql_safe($url_save).'",'.$userid.','.$category_id.','.$public.',"'.sql_safe($title).'",'.$freq_total.','.$mode.',"'.$datetime.'","'.sql_safe($notes).'","'.sql_safe($keywords).'","'.$speed.'","'.$sequence.'")');
+		$base_instance->query('INSERT INTO '.$base_instance->entity['LINK']['MAIN'].' (datetime,subtitle,url,user,category,public,title,frequency,frequency_mode,last_visit,notes,keywords,speed,sequence) VALUES ("'.sql_safe($datetime).'","'.sql_safe($subtitle).'","'.sql_safe($url_save).'",'.$userid.','.$category_id.','.$public.',"'.sql_safe($title).'",'.$freq_total.','.$mode.',"'.$datetime.'","'.sql_safe($notes).'","'.sql_safe($keywords).'","'.$speed.'","'.$sequence.'")');
 
-	$link_id=mysqli_insert_id($base_instance->db_link);
+		$link_id=mysqli_insert_id($base_instance->db_link);
 
-	$base_instance->show_message('Link saved','<a href="add-link.php?category_id='.$category_id.'">[Add more]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">[Delete]</a> &nbsp;&nbsp; <a href="send-content.php?link_id='.$link_id.'">[Send]</a> &nbsp;&nbsp; <a href="show-links.php">[Show all]</a><p>');
+		$base_instance->show_message('Link saved','<a href="add-link.php?category_id='.$category_id.'">[Add more]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'edit-link.php?link_id='.$link_id.'\',\'\',\'width=550,height=650,top=100,left=100\'))">[Edit]</a> &nbsp;&nbsp; <a href="javascript:void(window.open(\'delete-link.php?link_id='.$link_id.'\',\'\',\'width=450,height=300,top=100,left=100\'))">[Delete]</a> &nbsp;&nbsp; <a href="send-content.php?link_id='.$link_id.'">[Send]</a> &nbsp;&nbsp; <a href="show-links.php">[Show all]</a><p>');
 
 	}
 
 	else {
 
-	$html_instance->error_message=$error;
-	$subtitle=stripslashes($subtitle);
-	$keywords=stripslashes($keywords);
-	$notes=stripslashes($notes);
+		$html_instance->error_message=$error;
+		$subtitle=stripslashes($subtitle);
+		$keywords=stripslashes($keywords);
+		$notes=stripslashes($notes);
 
 	}
 
@@ -171,9 +177,8 @@ $title=stripslashes($title);
 
 if (!$category_id) {
 
-$data=$base_instance->get_data("SELECT default_link_category FROM {$base_instance->entity['USER']['MAIN']} WHERE ID='$userid'");
-
-$category_id=$data[1]->default_link_category;
+	$data=$base_instance->get_data("SELECT default_link_category FROM {$base_instance->entity['USER']['MAIN']} WHERE ID='$userid'");
+	$category_id=$data[1]->default_link_category;
 
 }
 
@@ -185,11 +190,11 @@ if (!$select_box) { $cat_title='New Category:'; $select_category='&nbsp;<input t
 
 else {
 
-$cat_title='Category:';
+	$cat_title='Category:';
 
-$select_category='&nbsp;<select name="category_id"><option selected value=0>-- Choose Category --'.$select_box.'</select> or
-
-<tr><td align="right"><b>New Category:</b></td><td align="left">&nbsp;<input type="text" name="new_category" size="50" value="'.$new_category.'"></td></tr>';
+	$select_category='&nbsp;<select name="category_id"><option selected value=0>-- Choose Category --'.$select_box.'</select> or
+	
+	<tr><td align="right"><b>New Category:</b></td><td align="left">&nbsp;<input type="text" name="new_category" size="50" value="'.$new_category.'"></td></tr>';
 
 }
 
@@ -204,19 +209,21 @@ array('ACTION'=>'show_form',
 'BUTTON_TEXT'=>'Save Link'
 ));
 
-$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'url','VALUE'=>"$url",'SIZE'=>50,'TEXT'=>'URL'));
+$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'url','VALUE'=>$url,'SIZE'=>50,'TEXT'=>'URL'));
 
-$html_instance->add_form_field(array('TYPE'=>'label','TEXT1'=>"$cat_title",'TEXT2'=>"$select_category",'SECTIONS'=>2));
+$html_instance->add_form_field(array('TYPE'=>'label','TEXT1'=>$cat_title,'TEXT2'=>$select_category,'SECTIONS'=>2));
 
-$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'title','VALUE'=>"$title",'SIZE'=>50,'TEXT'=>'Title'));
+$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'title','VALUE'=>$title,'SIZE'=>50,'TEXT'=>'Title'));
 
-$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'subtitle','VALUE'=>"$subtitle",'SIZE'=>50,'TEXT'=>'Subtitle'));
+$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'subtitle','VALUE'=>$subtitle,'SIZE'=>50,'TEXT'=>'Subtitle'));
 
-$html_instance->add_form_field(array('TYPE'=>'select','NAME'=>'speed','VALUE'=>"$speed",'OPTION'=>'speed_array','TEXT'=>'Ascent Speed','DO_NO_SORT_ARRAY'=>1));
+$html_instance->add_form_field(array('TYPE'=>'select','NAME'=>'speed','VALUE'=>$speed,'OPTION'=>'speed_array','TEXT'=>'Ascent Speed','DO_NO_SORT_ARRAY'=>1));
 
-$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'sequence','VALUE'=>"$sequence",'SIZE'=>10,'TEXT'=>'Sequence ID'));
+$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'sequence','VALUE'=>$sequence,'SIZE'=>10,'TEXT'=>'Sequence ID'));
 
-$html_instance->add_form_field(array('TYPE'=>'radio','NAME'=>'public','FIELD_ARRAY'=>'public_array','VALUE'=>"$public",'TEXT'=>'Link is'));
+$html_instance->add_form_field(array('TYPE'=>'radio','NAME'=>'public','FIELD_ARRAY'=>'public_array','VALUE'=>$public,'TEXT'=>'Link is'));
+
+$html_instance->add_form_field(array('TYPE'=>'label','TEXT1'=>'Link is:','TEXT2'=>'Due to spamming all links are now private.','SECTIONS'=>2));
 
 if (!$number_of_days && !$number_of_hours && !$number_of_mins) { $number_of_days=30; }
 
@@ -230,11 +237,11 @@ $html_instance->add_form_field(array('TYPE'=>'label','TEXT1'=>'Show Link in Blue
 
 $freq_text2='<p>Days: <input type="text" name="number_of_days" size="3" value="'.$number_of_days.'"> &nbsp; Hours: <input type="text" name="number_of_hours" size="3" value="'.$number_of_hours.'"> &nbsp; Minutes: <input type="text" name="number_of_mins" size="3" value="'.$number_of_mins.'">';
 
-$html_instance->add_form_field(array('TYPE'=>'label','TEXT1'=>'','TEXT2'=>"$freq_text2",'SECTIONS'=>2));
+$html_instance->add_form_field(array('TYPE'=>'label','TEXT1'=>'','TEXT2'=>$freq_text2,'SECTIONS'=>2));
 
-$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'keywords','VALUE'=>"$keywords",'SIZE'=>50,'TEXT'=>'Keywords'));
+$html_instance->add_form_field(array('TYPE'=>'text','NAME'=>'keywords','VALUE'=>$keywords,'SIZE'=>50,'TEXT'=>'Keywords'));
 
-$html_instance->add_form_field(array('TYPE'=>'textarea','NAME'=>'notes','VALUE'=>"$notes",'COLS'=>50,'ROWS'=>2,'TEXT'=>'Notes','SECTIONS'=>2));
+$html_instance->add_form_field(array('TYPE'=>'textarea','NAME'=>'notes','VALUE'=>$notes,'COLS'=>50,'ROWS'=>2,'TEXT'=>'Notes','SECTIONS'=>2));
 
 $html_instance->process();
 
